@@ -163,7 +163,7 @@ export default function CareersPage() {
 
             <div className="text-center mt-12">
               <p className="text-gray-600 mb-4">
-                Don't see your perfect role? We're always looking for talented individuals.
+                Don&apos;t see your perfect role? We&apos;re always looking for talented individuals.
               </p>
               <a 
                 href="mailto:Hr@ytpr.in?subject=General Application" 
@@ -181,7 +181,7 @@ export default function CareersPage() {
             <h2 className="text-3xl font-bold mb-6">Our Culture</h2>
             <p className="text-xl mb-12">
               At Young Thames, we foster an environment of collaboration, innovation, and continuous learning. 
-              Our team is our greatest asset, and we're committed to creating opportunities for everyone to thrive.
+              Our team is our greatest asset, and we&apos;re committed to creating opportunities for everyone to thrive.
             </p>
             
             <div className="grid md:grid-cols-3 gap-8">
@@ -206,7 +206,7 @@ export default function CareersPage() {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Start Your Journey With Us?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Send us your resume and let's explore how you can contribute to our team.
+              Send us your resume and let&apos;s explore how you can contribute to our team.
             </p>
             <a 
               href="mailto:Hr@ytpr.in" 

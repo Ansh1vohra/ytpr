@@ -105,7 +105,7 @@ export default function SolutionsPage() {
         <section className="py-16 px-4 bg-white">
           <div className="container mx-auto">
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {solutions.map((solution, index) => (
+              {solutions.map((solution) => (
                 <div 
                   key={solution.id}
                   className={`${solution.bgColor} border ${solution.borderColor} p-8 rounded-xl hover:shadow-lg transition-all duration-300 h-full flex flex-col`}
@@ -183,7 +183,7 @@ export default function SolutionsPage() {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Challenges Into Opportunities?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Let's discuss how our specialized solutions can address your unique needs
+              Let&apos;s discuss how our specialized solutions can address your unique needs
             </p>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
               Connect With Our Experts

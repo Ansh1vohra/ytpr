@@ -51,7 +51,7 @@ export default function ExpertisePage() {
           <div className="container mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Expertise</h1>
             <p className="text-xl max-w-2xl mx-auto">
-              Comprehensive communication solutions tailored to your brand's unique needs
+              Comprehensive communication solutions tailored to your brand&apos;s unique needs
             </p>
           </div>
         </section>
@@ -122,7 +122,7 @@ export default function ExpertisePage() {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold text-gray-800 mb-6">See Our Work in Action</h2>
             <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-              Explore how we've helped clients achieve measurable results across industries
+              Explore how we&apos;ve helped clients achieve measurable results across industries
             </p>
             <button className="bg-blue-600 text-white px-8 py-3 rounded-lg font-semibold hover:bg-blue-700 transition duration-300">
               View Case Studies
@@ -135,7 +135,7 @@ export default function ExpertisePage() {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Elevate Your Brand?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Let's discuss how our expertise can drive your communication strategy forward
+              Let&apos;s discuss how our expertise can drive your communication strategy forward
             </p>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
               Get in Touch

@@ -165,7 +165,7 @@ export default function HomePage() {
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
-              Let's collaborate to create powerful communication strategies that drive results.
+              Let&apos;s collaborate to create powerful communication strategies that drive results.
             </p>
             <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
               Contact Our Team

@@ -202,7 +202,7 @@ export default function ConnectPage() {
                     <div className="container mx-auto text-center">
                         <h2 className="text-3xl font-bold mb-6">Ready to Transform Your PR Strategy?</h2>
                         <p className="text-xl max-w-2xl mx-auto mb-8">
-                            Let's collaborate to create powerful communication strategies that drive results.
+                            Let&apos;s collaborate to create powerful communication strategies that drive results.
                         </p>
                         <a
                             href="mailto:cmo@ytpr.in"
