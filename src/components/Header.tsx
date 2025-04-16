@@ -3,43 +3,61 @@
 import Logo from "@/assets/Logo.avif";
 import Image from "next/image";
 import { useState } from "react";
+import Link from "next/link";
 
 export default function Header() {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+    // Navigation links data
+    const navLinks = [
+        { name: "Home", path: "/" },
+        { name: "About", path: "/about" },
+        { name: "Expertise", path: "/expertise" },
+        { name: "Solutions", path: "/solutions" },
+        { name: "Careers", path: "/careers" },
+        { name: "Connect", path: "/connect" },
+    ];
+
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-md w-full">
-            <div className="container mx-auto px-4 py-4 font-[family-name:var(--font-geist-sans)]">
-                <div className="flex justify-between items-center px-10">
+        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm w-full border-b border-gray-100">
+            <div className="container mx-auto px-12 py-5 font-[family-name:var(--font-geist-sans)]">
+                <div className="flex justify-between items-center">
                     {/* Logo Section */}
-                    <div className="flex items-center">
+                    <Link href="/" className="flex items-center group" onClick={() => setIsMenuOpen(false)}>
                         <Image
                             src={Logo}
-                            alt="Logo"
+                            alt="Company Logo"
                             width={100}
                             height={100}
-                            className="w-16 h-auto md:w-20"
+                            priority
                         />
-                    </div>
+                    </Link>
 
                     {/* Desktop Navigation */}
-                    <nav className="hidden md:block">
-                        <ul className="flex gap-6">
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">Home</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">About</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">Expertise</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">Solutions</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">Careers</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors">Connect</li>
+                    <nav className="hidden md:block" aria-label="Main navigation">
+                        <ul className="flex gap-8">
+                            {navLinks.map((link) => (
+                                <li key={link.path}>
+                                    <Link
+                                        href={link.path}
+                                        className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-sm uppercase tracking-wider relative group"
+                                    >
+                                        {link.name}
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
 
                     {/* Mobile Menu Button */}
                     <button 
-                        className="md:hidden focus:outline-none"
+                        className="md:hidden focus:outline-none p-2 -mr-2"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
+                        aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                        aria-expanded={isMenuOpen}
                     >
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             {isMenuOpen ? (
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             ) : (
@@ -51,18 +69,23 @@ export default function Header() {
 
                 {/* Mobile Navigation */}
                 {isMenuOpen && (
-                    <nav className="md:hidden mt-4 pb-4">
-                        <ul className="flex flex-col gap-3">
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">Home</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">About</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">Expertise</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">Solutions</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">Careers</li>
-                            <li className="cursor-pointer hover:text-emerald-600 transition-colors py-2">Connect</li>
+                    <nav className="md:hidden pt-4 pb-6" aria-label="Mobile navigation">
+                        <ul className="flex flex-col gap-1">
+                            {navLinks.map((link) => (
+                                <li key={link.path}>
+                                    <Link
+                                        href={link.path}
+                                        className="block py-3 px-4 text-gray-700 hover:bg-gray-50 hover:text-emerald-600 rounded-lg transition-colors font-medium"
+                                        onClick={() => setIsMenuOpen(false)}
+                                    >
+                                        {link.name}
+                                    </Link>
+                                </li>
+                            ))}
                         </ul>
                     </nav>
                 )}
             </div>
         </header>
-    )
+    );
 }
