@@ -2,14 +2,15 @@
 
 import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
-      
+
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-900 to-purple-800 text-white py-20 px-4">
+        <section className="relative bg-gradient-to-r from-blue-900 to-purple-800 text-white py-20 px-10">
           <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -27,8 +28,8 @@ export default function HomePage() {
             <div className="md:w-1/2">
               <div className="relative h-80 md:h-96 w-full bg-gray-200 rounded-xl overflow-hidden">
                 {/* Replace with your actual hero image */}
-                <Image 
-                  src="/hero-image.jpg" 
+                <Image
+                  src="/hero-image.jpg"
                   alt="Strategic Communication"
                   fill
                   className="object-cover"
@@ -40,7 +41,7 @@ export default function HomePage() {
         </section>
 
         {/* About Section */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-16 px-10 bg-white">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2 space-y-6">
@@ -62,8 +63,8 @@ export default function HomePage() {
               <div className="md:w-1/2 grid grid-cols-2 gap-4">
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
                   {/* Award image */}
-                  <Image 
-                    src="/award-image.jpg" 
+                  <Image
+                    src="/award-image.jpg"
                     alt="Marketing award"
                     fill
                     className="object-cover"
@@ -71,8 +72,8 @@ export default function HomePage() {
                 </div>
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
                   {/* Neon sign image */}
-                  <Image 
-                    src="/neon-sign.jpg" 
+                  <Image
+                    src="/neon-sign.jpg"
                     alt="Neon sign"
                     fill
                     className="object-cover"
@@ -80,8 +81,8 @@ export default function HomePage() {
                 </div>
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden col-span-2">
                   {/* Office image */}
-                  <Image 
-                    src="/office-image.jpg" 
+                  <Image
+                    src="/office-image.jpg"
                     alt="Modern office"
                     fill
                     className="object-cover"
@@ -93,10 +94,10 @@ export default function HomePage() {
         </section>
 
         {/* Vision & Mission Section */}
-        <section className="py-16 px-4 bg-gray-50">
+        <section className="py-16 px-10 bg-gray-50">
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Vision and Mission</h2>
-            
+
             <div className="grid md:grid-cols-2 gap-8">
               <div className="bg-white p-8 rounded-xl shadow-sm">
                 <div className="flex items-center gap-4 mb-4">
@@ -109,7 +110,7 @@ export default function HomePage() {
                   To be the most trusted strategic communication partner for brands navigating complex markets and transformative change.
                 </p>
               </div>
-              
+
               <div className="bg-white p-8 rounded-xl shadow-sm">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-purple-100 p-3 rounded-full">
@@ -126,10 +127,10 @@ export default function HomePage() {
         </section>
 
         {/* Services Section */}
-        <section className="py-16 px-4 bg-white">
+        <section className="py-16 px-10 bg-white">
           <div className="container mx-auto">
             <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Expertise</h2>
-            
+
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
@@ -161,15 +162,17 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <section className="py-16 px-10 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
               Let&apos;s collaborate to create powerful communication strategies that drive results.
             </p>
-            <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
-              Contact Our Team
-            </button>
+            <Link href="/connect">
+              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+                Contact Our Team
+              </button>
+            </Link>
           </div>
         </section>
       </main>

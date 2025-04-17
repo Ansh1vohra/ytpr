@@ -1,6 +1,6 @@
 "use client";
 
-import Logo from "@/assets/Logo.avif";
+import Logo from "@/assets/Logo.png";
 import Image from "next/image";
 import { useState } from "react";
 import Link from "next/link";
@@ -27,8 +27,8 @@ export default function Header() {
                         <Image
                             src={Logo}
                             alt="Company Logo"
-                            width={100}
-                            height={100}
+                            width={130}
+                            height={130}
                             priority
                         />
                     </Link>
