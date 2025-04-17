@@ -1,6 +1,6 @@
 "use client";
 
-import { FaChess, FaPalette, FaFire, FaChartLine, FaBullhorn, FaLightbulb, FaSearch, FaChartBar, FaRocket, FaIndustry, FaMoneyBillWave, FaHeartbeat, FaGraduationCap, FaHandsHelping } from "react-icons/fa";
+import { FaChess, FaPalette, FaChartLine, FaBullhorn, FaLightbulb, FaSearch, FaChartBar, FaRocket, FaIndustry, FaMoneyBillWave, FaHeartbeat, FaGraduationCap, FaHandsHelping } from "react-icons/fa";
 
 export default function ExpertisePage() {
   const coreExpertise = [
@@ -225,7 +225,7 @@ export default function ExpertisePage() {
         {/* Final CTA */}
         <section className="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-6">Let's Elevate Your Brand Together!</h2>
+            <h2 className="text-3xl font-bold mb-6">Let&apos;s Elevate Your Brand Together!</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">
               Whether you need marketing brilliance, communication expertise, or PR mastery, we have the skills to help you succeed.
             </p>
