@@ -9,7 +9,7 @@ export default function HomePage() {
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-900 to-purple-800 text-white py-20 px-10">
+        <section className="relative bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20 px-10">
           <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
             <div className="md:w-1/2 space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
@@ -63,7 +63,7 @@ export default function HomePage() {
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
                   {/* Award image */}
                   <Image
-                    src="/award-image.jpg"
+                    src="/award.jpg"
                     alt="Marketing award"
                     fill
                     className="object-cover"
@@ -72,7 +72,7 @@ export default function HomePage() {
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
                   {/* Neon sign image */}
                   <Image
-                    src="/neon-sign.jpg"
+                    src="/business.jpg"
                     alt="Neon sign"
                     fill
                     className="object-cover"
@@ -81,7 +81,7 @@ export default function HomePage() {
                 <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden col-span-2">
                   {/* Office image */}
                   <Image
-                    src="/office-image.jpg"
+                    src="/office.jpg"
                     alt="Modern office"
                     fill
                     className="object-cover"
@@ -164,7 +164,7 @@ export default function HomePage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 px-10 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <section className="py-16 px-10 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
             <p className="text-xl max-w-2xl mx-auto mb-8">

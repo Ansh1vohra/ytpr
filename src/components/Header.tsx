@@ -19,7 +19,7 @@ export default function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-sm w-full border-b border-gray-800">
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 backdrop-blur-sm shadow-sm w-full border-b border-gray-800">
             <div className="container mx-auto px-12 py-6 font-[family-name:var(--font-geist-sans)]">
                 <div className="flex justify-between items-center">
                     {/* Logo Section */}
