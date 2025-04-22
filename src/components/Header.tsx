@@ -19,8 +19,8 @@ export default function Header() {
     ];
 
     return (
-        <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-sm shadow-sm w-full border-b border-gray-100">
-            <div className="container mx-auto px-12 py-5 font-[family-name:var(--font-geist-sans)]">
+        <header className="sticky top-0 z-50 bg-gray-900/90 backdrop-blur-sm shadow-sm w-full border-b border-gray-800">
+            <div className="container mx-auto px-12 py-6 font-[family-name:var(--font-geist-sans)]">
                 <div className="flex justify-between items-center">
                     {/* Logo Section */}
                     <Link href="/" className="flex items-center group" onClick={() => setIsMenuOpen(false)}>
@@ -40,10 +40,10 @@ export default function Header() {
                                 <li key={link.path}>
                                     <Link
                                         href={link.path}
-                                        className="text-gray-700 hover:text-emerald-600 transition-colors font-medium text-sm uppercase tracking-wider relative group"
+                                        className="text-white hover:text-emerald-400 transition-colors font-medium text-md tracking-wider relative group"
                                     >
                                         {link.name}
-                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-600 transition-all group-hover:w-full"></span>
+                                        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full"></span>
                                     </Link>
                                 </li>
                             ))}
@@ -57,7 +57,7 @@ export default function Header() {
                         aria-label={isMenuOpen ? "Close menu" : "Open menu"}
                         aria-expanded={isMenuOpen}
                     >
-                        <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             {isMenuOpen ? (
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                             ) : (
@@ -75,7 +75,7 @@ export default function Header() {
                                 <li key={link.path}>
                                     <Link
                                         href={link.path}
-                                        className="block py-3 px-4 text-gray-700 hover:bg-gray-50 hover:text-emerald-600 rounded-lg transition-colors font-medium"
+                                        className="block py-3 px-4 text-white hover:bg-gray-800 hover:text-emerald-400 rounded-lg transition-colors font-medium"
                                         onClick={() => setIsMenuOpen(false)}
                                     >
                                         {link.name}

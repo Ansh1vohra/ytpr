@@ -7,7 +7,6 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col">
-
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-blue-900 to-purple-800 text-white py-20 px-10">
@@ -29,7 +28,7 @@ export default function HomePage() {
               <div className="relative h-80 md:h-96 w-full bg-gray-200 rounded-xl overflow-hidden">
                 {/* Replace with your actual hero image */}
                 <Image
-                  src="/hero-image.jpg"
+                  src="/home1.avif"
                   alt="Strategic Communication"
                   fill
                   className="object-cover"
@@ -41,22 +40,22 @@ export default function HomePage() {
         </section>
 
         {/* About Section */}
-        <section className="py-16 px-10 bg-white">
+        <section className="py-16 px-10">
           <div className="container mx-auto">
             <div className="flex flex-col md:flex-row gap-12 items-center">
               <div className="md:w-1/2 space-y-6">
-                <h2 className="text-3xl font-bold text-gray-800">About Young Thames</h2>
-                <p className="text-lg text-gray-600">
+                <h2 className="text-3xl font-bold text-white">About Young Thames</h2>
+                <p className="text-lg text-gray-100">
                   At Young Thames, we empower businesses with strategic public relations, creative solutions, and transformative insights across diverse industries to drive meaningful change.
                 </p>
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-blue-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-blue-800">15+ Years</h3>
-                    <p className="text-sm text-gray-600">Industry Experience</p>
+                  <div className="backdrop-blur-sm bg-white/30 p-4 rounded-lg border border-white/20 shadow-sm">
+                    <h3 className="font-semibold text-white">15+ Years</h3>
+                    <p className="text-sm text-gray-200">Industry Experience</p>
                   </div>
-                  <div className="bg-purple-50 p-4 rounded-lg">
-                    <h3 className="font-semibold text-purple-800">120+</h3>
-                    <p className="text-sm text-gray-600">Satisfied Clients</p>
+                  <div className="backdrop-blur-sm bg-white/30 p-4 rounded-lg border border-white/20 shadow-sm">
+                    <h3 className="font-semibold text-white">120+</h3>
+                    <p className="text-sm text-gray-200">Satisfied Clients</p>
                   </div>
                 </div>
               </div>
@@ -94,31 +93,31 @@ export default function HomePage() {
         </section>
 
         {/* Vision & Mission Section */}
-        <section className="py-16 px-10 bg-gray-50">
+        <section className="py-16 px-10 bg-gray-700">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Vision and Mission</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-12">Our Vision and Mission</h2>
 
             <div className="grid md:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-blue-100 p-3 rounded-full">
-                    <FaLightbulb className="text-blue-600 text-xl" />
+                  <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
+                    <FaLightbulb className="text-white text-xl" />
                   </div>
-                  <h3 className="text-xl font-semibold">Our Vision</h3>
+                  <h3 className="text-xl font-semibold text-white">Our Vision</h3>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-gray-200">
                   To be the most trusted strategic communication partner for brands navigating complex markets and transformative change.
                 </p>
               </div>
 
-              <div className="bg-white p-8 rounded-xl shadow-sm">
+              <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow">
                 <div className="flex items-center gap-4 mb-4">
-                  <div className="bg-purple-100 p-3 rounded-full">
-                    <FaBullseye className="text-purple-600 text-xl" />
+                  <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
+                    <FaBullseye className="text-white text-xl" />
                   </div>
-                  <h3 className="text-xl font-semibold">Our Mission</h3>
+                  <h3 className="text-xl font-semibold text-white">Our Mission</h3>
                 </div>
-                <p className="text-gray-600">
+                <p className="text-gray-200">
                   We are a public relations agency dedicated to advising brands, fostering innovation, and navigating challenges in sectors like health, technology, and more.
                 </p>
               </div>
@@ -127,34 +126,37 @@ export default function HomePage() {
         </section>
 
         {/* Services Section */}
-        <section className="py-16 px-10 bg-white">
+        <section className="py-16 px-10 bg-gray-800">
           <div className="container mx-auto">
-            <h2 className="text-3xl font-bold text-center text-gray-800 mb-12">Our Expertise</h2>
+            <h2 className="text-3xl font-bold text-center text-white mb-12">Our Expertise</h2>
 
             <div className="grid md:grid-cols-3 gap-8">
               {[
                 {
                   title: "Strategic PR",
                   description: "Comprehensive public relations strategies tailored to your brand objectives.",
-                  icon: <FaChartLine className="text-blue-600 text-2xl" />
+                  icon: <FaChartLine className="text-blue-400 text-2xl" />
                 },
                 {
                   title: "Creative Solutions",
                   description: "Innovative campaigns that capture attention and drive engagement.",
-                  icon: <FaLightbulb className="text-purple-600 text-2xl" />
+                  icon: <FaLightbulb className="text-purple-400 text-2xl" />
                 },
                 {
                   title: "Industry Insights",
                   description: "Deep sector knowledge across health, tech, finance and more.",
-                  icon: <FaBullseye className="text-emerald-600 text-2xl" />
+                  icon: <FaBullseye className="text-emerald-400 text-2xl" />
                 }
               ].map((service, index) => (
-                <div key={index} className="bg-gray-50 p-8 rounded-xl hover:shadow-md transition-shadow">
-                  <div className="bg-white p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                <div 
+                  key={index} 
+                  className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 hover:shadow-xl transition-shadow"
+                >
+                  <div className="bg-white/20 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4 backdrop-blur-sm">
                     {service.icon}
                   </div>
-                  <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                  <p className="text-gray-600">{service.description}</p>
+                  <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
+                  <p className="text-gray-200">{service.description}</p>
                 </div>
               ))}
             </div>
@@ -176,7 +178,6 @@ export default function HomePage() {
           </div>
         </section>
       </main>
-
     </div>
   );
 }
