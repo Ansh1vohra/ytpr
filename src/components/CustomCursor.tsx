@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
-const CustomCursor = () => {
-  // Track hover state for scaling and opacity
-  const [isHovered, setIsHovered] = useState(false);
+interface CustomCursorProps {
+  isHovered: boolean;
+}
 
+const CustomCursor: React.FC<CustomCursorProps> = ({ isHovered }) => {
+  // Track hover state for scaling and opacity
   // Motion values for smooth cursor movement
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -29,7 +31,7 @@ const CustomCursor = () => {
     <>
       {/* Inner glowing circle only */}
       <motion.div
-        className="fixed top-0 left-0 w-8 h-8 rounded-full bg-gray-100 pointer-events-none z-50 shadow-lg"
+        className="fixed top-0 left-0 w-8 h-8 rounded-full bg-white pointer-events-none z-50 shadow-lg"
         style={{
           translateX: cursorX,
           translateY: cursorY,

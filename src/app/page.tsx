@@ -3,10 +3,15 @@
 import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react"; // Import useState
+import CustomCursor from "@/components/CustomCursor"; // Import the CustomCursor component
 
 export default function HomePage() {
+  const [isButtonHovered, setIsButtonHovered] = useState(false);  // State for button hover
+
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col cursor-none"> {/* Hide the default cursor */}
+      <CustomCursor isHovered={isButtonHovered} /> {/* Pass the hover state to the CustomCursor */}
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20 px-10">
@@ -20,9 +25,15 @@ export default function HomePage() {
               <p className="text-xl text-gray-200">
                 Expert public relations and marketing solutions for diverse industries and impactful organizational change.
               </p>
-              <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2">
-                Get Started <FaArrowRight />
-              </button>
+              <Link href="/connect">
+                <button
+                  className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2"
+                  onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
+                  onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
+                >
+                  Get Started <FaArrowRight />
+                </button>
+              </Link>
             </div>
             <div className="md:w-1/2">
               <div className="relative h-80 md:h-96 w-full bg-gray-200 rounded-xl overflow-hidden">
@@ -148,8 +159,8 @@ export default function HomePage() {
                   icon: <FaBullseye className="text-emerald-400 text-2xl" />
                 }
               ].map((service, index) => (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 hover:shadow-xl transition-shadow"
                 >
                   <div className="bg-white/20 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4 backdrop-blur-sm">
@@ -171,7 +182,11 @@ export default function HomePage() {
               Let&apos;s collaborate to create powerful communication strategies that drive results.
             </p>
             <Link href="/connect">
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300">
+              <button
+                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
+                onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
+                onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
+              >
                 Contact Our Team
               </button>
             </Link>
