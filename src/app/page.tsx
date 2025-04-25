@@ -14,13 +14,14 @@ export default function HomePage() {
       <CustomCursor isHovered={isButtonHovered} />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20 px-10">
-          <div className="container mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div className="md:w-1/2 space-y-6">
+        <section className="relative bg-[url(/home1.avif)] bg-no-repeat bg-cover text-white py-20 px-10 flex items-center h-[80vh]">
+          {/* Overlay for reduced background image opacity */}
+          <div className="absolute inset-0 bg-black/60"></div>
+          <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
+            <div className="space-y-6">
               <h1 className="text-4xl md:text-5xl font-bold leading-tight">
                 Transforming Brands <br />
-                Through <br />
-                Strategic Communication
+                Through <br /> Strategic Communication
               </h1>
               <p className="text-xl text-gray-200">
                 Expert public relations and marketing solutions for diverse industries and impactful organizational change.
@@ -28,27 +29,16 @@ export default function HomePage() {
               <Link href="/connect">
                 <button
                   className="bg-white cursor-pointer text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2"
-                  onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
-                  onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
+                  onMouseEnter={() => setIsButtonHovered(true)}
+                  onMouseLeave={() => setIsButtonHovered(false)}
                 >
                   Get Started <FaArrowRight />
                 </button>
               </Link>
             </div>
-            <div className="md:w-1/2">
-              <div className="relative h-80 md:h-96 w-full bg-gray-200 rounded-xl overflow-hidden">
-                {/* Replace with your actual hero image */}
-                <Image
-                  src="/home1.avif"
-                  alt="Strategic Communication"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
           </div>
         </section>
+
 
         {/* About Section */}
         <section className="py-16 px-10">
