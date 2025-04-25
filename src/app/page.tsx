@@ -14,7 +14,7 @@ export default function HomePage() {
       <CustomCursor isHovered={isButtonHovered} />
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-[url(/home1.avif)] bg-no-repeat bg-cover text-white py-20 px-10 flex items-center h-[80vh]">
+        <section className="relative bg-[url(/home1.avif)] bg-no-repeat bg-cover text-white py-20 px-10 flex items-center h-[85vh]">
           {/* Overlay for reduced background image opacity */}
           <div className="absolute inset-0 bg-black/60"></div>
           <div className="container mx-auto flex flex-col md:flex-row items-center gap-12 relative z-10">
