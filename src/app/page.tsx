@@ -10,8 +10,8 @@ export default function HomePage() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);  // State for button hover
 
   return (
-    <div className="min-h-screen flex flex-col cursor-none"> {/* Hide the default cursor */}
-      <CustomCursor isHovered={isButtonHovered} /> {/* Pass the hover state to the CustomCursor */}
+    <div>
+      <CustomCursor isHovered={isButtonHovered} />
       <main className="flex-grow">
         {/* Hero Section */}
         <section className="relative bg-gradient-to-r from-indigo-900 to-purple-900 text-white py-20 px-10">
@@ -27,7 +27,7 @@ export default function HomePage() {
               </p>
               <Link href="/connect">
                 <button
-                  className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2"
+                  className="bg-white cursor-pointer text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2"
                   onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
                   onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
                 >
@@ -183,7 +183,7 @@ export default function HomePage() {
             </p>
             <Link href="/connect">
               <button
-                className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
+                className="bg-white cursor-pointer text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
                 onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
                 onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
               >

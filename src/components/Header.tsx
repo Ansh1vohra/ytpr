@@ -25,7 +25,7 @@ export default function Header() {
   const isHovered = isLinkHovered || logoHovered;
 
   return (
-    <div className="cursor-none relative">
+    <div className="cursor-none sticky top-0 z-20 ">
       {/* Custom Cursor */}
       <CustomCursor isHovered={isHovered} />
 

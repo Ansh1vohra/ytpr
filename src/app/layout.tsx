@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
-// import CustomCursor from "@/components/CustomCursor";
+import CustomCursor from "@/components/CustomCursor";
 
 import "./globals.css";
 import Header from "@/components/Header";
@@ -40,7 +40,7 @@ export default function RootLayout({
       <body
         className={`${montserrat.variable} antialiased bg-gray-800`}
       >
-        {/* <CustomCursor /> */}
+        <CustomCursor isHovered={false} />
         <Header />
         {children}
         <Footer />
