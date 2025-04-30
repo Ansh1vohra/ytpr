@@ -2,15 +2,16 @@
 
 import Logo from "@/assets/Logo.png";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import CustomCursor from "./CustomCursor"; // Adjust the path as needed
+import CustomCursor from "./CustomCursor";
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLinkHovered, setIsLinkHovered] = useState(false);
   const [logoHovered, setLogoHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
 
   const navLinks = [
     { name: "Home", path: "/" },
@@ -21,18 +22,27 @@ export default function Header() {
     { name: "Connect", path: "/connect" },
   ];
 
-  // Combined hover state for cursor
   const isHovered = isLinkHovered || logoHovered;
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <div className="cursor-none sticky top-0 z-20 ">
-      {/* Custom Cursor */}
+    <div className="cursor-none sticky top-0 z-50">
       <CustomCursor isHovered={isHovered} />
 
-      <header className="sticky top-0 z-20 bg-gradient-to-r from-slate-800 to-gray-900 backdrop-blur-sm shadow-sm w-full border-b border-gray-800">
+      <header className={`sticky top-0 z-50 ${isScrolled 
+        ? 'bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800' 
+        : 'bg-transparent border-b border-white border-transparent'
+      } transition-all duration-300`}>
         <div className="container mx-auto px-12 py-6 font-[family-name:var(--font-geist-sans)]">
           <div className="flex justify-between items-center">
-            {/* Logo Section */}
             <Link
               href="/"
               className="flex items-center group"
@@ -46,30 +56,35 @@ export default function Header() {
                   transition: "transform 0.3s ease-in-out",
                 }}
               >
-                <Image src={Logo} alt="Company Logo" width={130} height={130} priority />
+                <Image 
+                  src={Logo} 
+                  alt="Company Logo" 
+                  width={150} 
+                  height={150} 
+                  priority 
+                  className={isScrolled ? '' : 'brightness-0 invert'}
+                />
               </motion.div>
             </Link>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:block" aria-label="Main navigation">
+            <nav className="hidden md:block">
               <ul className="flex gap-8">
                 {navLinks.map((link) => (
                   <li key={link.path}>
                     <Link
                       href={link.path}
-                      className="text-white hover:text-emerald-400 transition-colors font-medium text-md tracking-wider relative group"
+                      className={`${isScrolled ? 'text-white' : 'text-white'} hover:text-emerald-400 transition-colors font-medium text-md tracking-wider relative group`}
                       onMouseEnter={() => setIsLinkHovered(true)}
                       onMouseLeave={() => setIsLinkHovered(false)}
                     >
                       {link.name}
-                      <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full"></span>
+                      <span className={`absolute bottom-0 left-0 w-0 h-0.5 ${isScrolled ? 'bg-emerald-400' : 'bg-white'} transition-all group-hover:w-full`}></span>
                     </Link>
                   </li>
                 ))}
               </ul>
             </nav>
 
-            {/* Mobile Menu Button */}
             <button
               className="md:hidden focus:outline-none p-2 -mr-2"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -88,9 +103,8 @@ export default function Header() {
             </button>
           </div>
 
-          {/* Mobile Navigation */}
           {isMenuOpen && (
-            <nav className="md:hidden pt-4 pb-6" aria-label="Mobile navigation">
+            <nav className="md:hidden pt-4 pb-6">
               <ul className="flex flex-col gap-1">
                 {navLinks.map((link) => (
                   <li key={link.path}>
