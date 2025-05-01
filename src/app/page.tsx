@@ -1,6 +1,7 @@
 "use client";
 
-import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
+// import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 // import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -98,7 +99,7 @@ export default function HomePage() {
 
       <div className="bg-orange-600 animate-gradient-cycle">
         <section className="py-40 px-10 text-gray-100 text-3xl">
-          <p>At our core, we believe brands shouldn't just mirror culture — they should actively shape it. To truly earn loyalty and trust, brands must create and deliver meaningful value. Powered by the <b>Young Thames Public Relations (YTPR)</b>
+          <p>At our core, we believe brands shouldn&apos;t just mirror culture — they should actively shape it. To truly earn loyalty and trust, brands must create and deliver meaningful value. Powered by the <b>Young Thames Public Relations (YTPR)</b>
             — a leading strategic communications and consulting network with a great foundation — our agency is purpose-built to help brands drive cultural impact and achieve measurable results.</p>
         </section>
 
