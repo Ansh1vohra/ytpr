@@ -1,11 +1,12 @@
 "use client";
 
 import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import ImageSlider from "@/components/ImageSlider";
 import CustomCursor from "@/components/CustomCursor";
- 
+
 export default function HomePage() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -41,10 +42,10 @@ export default function HomePage() {
     <div className="relative">
       <CustomCursor isHovered={isButtonHovered} />
 
-       <section className="relative text-white pt-[35vh] -mt-[95px]">
+      <section className="relative text-white pt-[35vh] -mt-[95px]">
         {/* Background images with fade transition */}
         {heroSlides.map((slide, index) => (
-          <div 
+          <div
             key={index}
             className={`absolute inset-0 bg-no-repeat bg-cover bg-center transition-opacity duration-1000 ${index === currentSlide ? 'opacity-100' : 'opacity-0'}`}
             style={{ backgroundImage: `url(${slide.image})` }}
@@ -58,7 +59,7 @@ export default function HomePage() {
         <div className="container mx-auto px-10 pb-20 relative z-10 h-full">
           <div className="space-y-6 max-w-2xl relative h-[50vh]">
             {heroSlides.map((slide, index) => (
-              <div 
+              <div
                 key={index}
                 className={`absolute top-0 left-0 w-full transition-all duration-1000 ${index === currentSlide ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}
               >
@@ -69,14 +70,14 @@ export default function HomePage() {
                   {slide.subtitle}
                 </p>
                 <Link href="/connect">
-                <button
-                  className="bg-white cursor-pointer text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2 mt-6"
-                  onMouseEnter={() => setIsButtonHovered(true)}
-                  onMouseLeave={() => setIsButtonHovered(false)}
-                >
-                  Get Started <FaArrowRight />
-                </button>
-              </Link>
+                  <button
+                    className="bg-white cursor-pointer text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2 mt-6"
+                    onMouseEnter={() => setIsButtonHovered(true)}
+                    onMouseLeave={() => setIsButtonHovered(false)}
+                  >
+                    Get Started <FaArrowRight />
+                  </button>
+                </Link>
               </div>
             ))}
           </div>
@@ -95,60 +96,27 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* About Section */}
-      <section className="py-16 px-10">
-        <div className="container mx-auto">
-          <div className="flex flex-col md:flex-row gap-12 items-center">
-            <div className="md:w-1/2 space-y-6">
-              <h2 className="text-3xl font-bold text-white">About Young Thames</h2>
-              <p className="text-lg text-gray-100">
-                At Young Thames, we empower businesses with strategic public relations, creative solutions, and transformative insights across diverse industries to drive meaningful change.
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="backdrop-blur-sm bg-white/30 p-4 rounded-lg border border-white/20 shadow-sm">
-                  <h3 className="font-semibold text-white">15+ Years</h3>
-                  <p className="text-sm text-gray-200">Industry Experience</p>
-                </div>
-                <div className="backdrop-blur-sm bg-white/30 p-4 rounded-lg border border-white/20 shadow-sm">
-                  <h3 className="font-semibold text-white">120+</h3>
-                  <p className="text-sm text-gray-200">Satisfied Clients</p>
-                </div>
-              </div>
-            </div>
-            <div className="md:w-1/2 grid grid-cols-2 gap-4">
-              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
-                {/* Award image */}
-                <Image
-                  src="/award.jpg"
-                  alt="Marketing award"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden">
-                {/* Neon sign image */}
-                <Image
-                  src="/business.jpg"
-                  alt="Neon sign"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-              <div className="relative h-48 bg-gray-200 rounded-lg overflow-hidden col-span-2">
-                {/* Office image */}
-                <Image
-                  src="/office.jpg"
-                  alt="Modern office"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <div className="bg-orange-600 animate-gradient-cycle">
+        <section className="py-40 px-10 text-gray-100 text-3xl">
+          <p>At our core, we believe brands shouldn't just mirror culture — they should actively shape it. To truly earn loyalty and trust, brands must create and deliver meaningful value. Powered by the <b>Young Thames Public Relations (YTPR)</b>
+            — a leading strategic communications and consulting network with a great foundation — our agency is purpose-built to help brands drive cultural impact and achieve measurable results.</p>
+        </section>
 
-      {/* Vision & Mission Section */}
+        <section className="px-10 pb-20 text-gray-100">
+          <h3 className="text-5xl">Our Work</h3>
+          <div className="py-10">
+            <ImageSlider />
+          </div>
+          <hr></hr>
+        </section>
+        <section className="py-10 px-10 text-white">
+          <h3 className="text-5xl">Our Expertise</h3>
+
+        </section>
+
+      </div>
+
+      {/* 
       <section className="py-16 px-10 bg-gray-700">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center text-white mb-12">Our Vision and Mission</h2>
@@ -181,7 +149,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Services Section */}
       <section className="py-16 px-10 bg-gray-800">
         <div className="container mx-auto">
           <h2 className="text-3xl font-bold text-center text-white mb-12">Our Expertise</h2>
@@ -219,7 +186,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-16 px-10 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
@@ -236,7 +202,7 @@ export default function HomePage() {
             </button>
           </Link>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

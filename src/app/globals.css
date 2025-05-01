@@ -8,3 +8,14 @@ body {
   font-optical-sizing: auto;
   cursor: none;
 }
+
+@keyframes gradient-cycle {
+  0% { background-color: #a00cea3c; } /* orange-600 */
+  33% { background-color: #2564eb3b; } /* blue-600 */
+  66% { background-color: #16a34a3c; } /* green-600 */
+  100% { background-color: #a00cea3c; } /* orange-600 */
+}
+
+.animate-gradient-cycle {
+  animation: gradient-cycle 9s ease infinite;
+}
