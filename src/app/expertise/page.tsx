@@ -209,15 +209,24 @@ export default function ExpertisePage() {
             <h2 className="text-3xl font-bold mb-12 text-white">Client Testimonials</h2>
             <div className="grid md:grid-cols-3 gap-8">
               {[
-                "Young Thames helped us transform our digital presence! Their innovative strategies drove measurable results.",
-                "Their PR expertise saved our brand during a challenging time.",
-                "The team's creativity is unmatched—they truly understand how to make brands shine!"
-              ].map((quote, index) => (
-                <div key={index} className="bg-black/20 p-6 rounded-xl border border-blue-800/50">
-                  <p className="italic mb-2 text-gray-300">&quot;{quote}&quot;</p>
-                  <p className="text-sm text-blue-300">— Client {String.fromCharCode(88 + index)}</p>
-                </div>
-              ))}
+              {
+                quote: "Young Thames transformed our brand presence online! Their innovative strategies helped us connect with our audience like never before.",
+                author: "Atharv"
+              },
+              {
+                quote: "The team at Young Thames truly understands the art of storytelling. They've helped us build lasting relationships with customers.",
+                author: "Anjali"
+              },
+              {
+                quote: "Their PR expertise is unmatched! Thanks to Young Thames, our brand has been featured in leading publications.",
+                author: "Jiya"
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-black/20 p-6 rounded-xl border border-blue-800/50">
+                <p className="text-gray-300 italic mb-4">&quot;{item.quote}&quot;</p>
+                <p className="text-gray-400 font-medium">— {item.author}</p>
+              </div>
+            ))}
             </div>
           </div>
         </section>

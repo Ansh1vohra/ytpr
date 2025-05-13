@@ -1,7 +1,7 @@
 "use client";
 
-// import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
-import { FaArrowRight } from "react-icons/fa";
+import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
+// import { FaArrowRight } from "react-icons/fa";
 // import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
@@ -29,6 +29,15 @@ export default function HomePage() {
       title: "Advising the Bold. Amplifying the Brave",
       subtitle: "Building meaningful connections between brands and their audiences."
     }
+  ];
+
+  const expertiseItems = [
+    "Creative, design and content",
+    "Public relations and Marketing",
+    "Strategy planning and reputation",
+    "Transaction and Transformation",
+    "Crises and issues",
+    "Public Affairs and impact"
   ];
 
   // Auto-rotate slides every 5 seconds
@@ -112,15 +121,20 @@ export default function HomePage() {
         </section>
         <section className="py-10 px-10 text-white">
           <h3 className="text-5xl">Our Expertise</h3>
-
+          <div className="p-5">
+            <div className="expertise-items">
+              {expertiseItems.map((item, index) => (
+                <div key={index} className="text-xl hover:text-2xl">
+                  {item}
+                </div>
+              ))}
+            </div>
+          </div>
         </section>
 
-      </div>
-
-      {/* 
-      <section className="py-16 px-10 bg-gray-700">
+      <section className="py-16 px-10">
         <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center text-white mb-12">Our Vision and Mission</h2>
+          <h2 className="text-5xl text-white mb-12">Our Vision and Mission</h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow">
@@ -150,44 +164,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="py-16 px-10 bg-gray-800">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold text-center text-white mb-12">Our Expertise</h2>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                title: "Strategic PR",
-                description: "Comprehensive public relations strategies tailored to your brand objectives.",
-                icon: <FaChartLine className="text-blue-400 text-2xl" />
-              },
-              {
-                title: "Creative Solutions",
-                description: "Innovative campaigns that capture attention and drive engagement.",
-                icon: <FaLightbulb className="text-purple-400 text-2xl" />
-              },
-              {
-                title: "Industry Insights",
-                description: "Deep sector knowledge across health, tech, finance and more.",
-                icon: <FaBullseye className="text-emerald-400 text-2xl" />
-              }
-            ].map((service, index) => (
-              <div
-                key={index}
-                className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 hover:shadow-xl transition-shadow"
-              >
-                <div className="bg-white/20 p-4 rounded-full w-12 h-12 flex items-center justify-center mb-4 backdrop-blur-sm">
-                  {service.icon}
-                </div>
-                <h3 className="text-xl font-semibold mb-2 text-white">{service.title}</h3>
-                <p className="text-gray-200">{service.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 px-10 bg-gradient-to-r from-indigo-900 to-purple-900 text-white">
+     
+      <section className="py-16 px-10 text-white">
         <div className="container mx-auto text-center">
           <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
           <p className="text-xl max-w-2xl mx-auto mb-8">
@@ -203,7 +181,10 @@ export default function HomePage() {
             </button>
           </Link>
         </div>
-      </section> */}
+      </section>
+      </div>
+
+
     </div>
   );
 }

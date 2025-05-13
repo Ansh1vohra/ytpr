@@ -1,7 +1,7 @@
 /* ImageSlider.css */
 .slider-container {
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
   padding: 20px;
 }
@@ -21,7 +21,7 @@
 
 .slide {
   width: 350px;
-  height: 500px;
+  /* height: 500px; */
   position: relative;
   overflow: hidden;
   border-radius: 8px;
@@ -55,7 +55,7 @@
 }
 
 .nav-btn {
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(35, 35, 35, 0.7);
   border: none;
   width: 50px;
   height: 50px;
@@ -69,6 +69,6 @@
 }
 
 .nav-btn:hover {
-  background-color: white;
+  background-color: rgb(36, 36, 36);
   transform: scale(1.1);
 }

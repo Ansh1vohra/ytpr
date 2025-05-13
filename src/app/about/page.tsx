@@ -198,15 +198,15 @@ const AboutUsPage: React.FC = () => {
             {[
               {
                 quote: "Young Thames transformed our brand presence online! Their innovative strategies helped us connect with our audience like never before.",
-                author: "Client A"
+                author: "Atharv"
               },
               {
                 quote: "The team at Young Thames truly understands the art of storytelling. They've helped us build lasting relationships with customers.",
-                author: "Client B"
+                author: "Anjali"
               },
               {
                 quote: "Their PR expertise is unmatched! Thanks to Young Thames, our brand has been featured in leading publications.",
-                author: "Client C"
+                author: "Jiya"
               }
             ].map((item, index) => (
               <div key={index} className="bg-gray-800 p-6 rounded-xl border border-gray-700">
