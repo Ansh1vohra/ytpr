@@ -36,6 +36,10 @@ body {
   font-family: "Oswald",sans-serif;
 }
 
+.expertise-grid{
+  display: flex;
+  flex-wrap: wrap;
+}
 
 .nut-container {
   position: relative;
