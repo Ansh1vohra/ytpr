@@ -1,8 +1,6 @@
 "use client";
 
-import { FaArrowRight, FaLightbulb, FaBullseye, FaChartLine } from "react-icons/fa";
-// import { FaArrowRight } from "react-icons/fa";
-// import Image from "next/image";
+import { FaArrowRight, FaLightbulb, FaBullseye } from "react-icons/fa";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import ImageSlider from "@/components/ImageSlider";
@@ -39,6 +37,7 @@ export default function HomePage() {
     "Crises and issues",
     "Public Affairs and impact"
   ];
+
 
   // Auto-rotate slides every 5 seconds
   useEffect(() => {
@@ -81,7 +80,7 @@ export default function HomePage() {
                 </p>
                 <Link href="/connect">
                   <button
-                    className="bg-white cursor-pointer text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2 mt-6"
+                    className="bg-white cursor-pointer md:cursor-none text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 flex items-center gap-2 mt-6"
                     onMouseEnter={() => setIsButtonHovered(true)}
                     onMouseLeave={() => setIsButtonHovered(false)}
                   >
@@ -107,81 +106,91 @@ export default function HomePage() {
       </section>
 
       <div className="bg-orange-600 animate-gradient-cycle">
-        <section className="py-40 px-10 text-gray-100 text-3xl">
+        <section className="py-40 px-10 text-3xl image.png">
           <p>At our core, we believe brands shouldn&apos;t just mirror culture — they should actively shape it. To truly earn loyalty and trust, brands must create and deliver meaningful value. Powered by the <b>Young Thames Public Relations (YTPR)</b>
             — a leading strategic communications and consulting network with a great foundation — our agency is purpose-built to help brands drive cultural impact and achieve measurable results.</p>
         </section>
 
-        <section className="px-10 pb-20 text-gray-100">
+        <section className="px-10 pb-20">
           <h3 className="text-5xl">Our Work</h3>
           <div className="py-10">
             <ImageSlider />
           </div>
-          <hr></hr>
         </section>
-        <section className="py-10 px-10 text-white">
-          <h3 className="text-5xl">Our Expertise</h3>
-          <div className="p-5">
-            <div className="expertise-items">
-              {expertiseItems.map((item, index) => (
-                <div key={index} className="text-xl hover:text-2xl">
-                  {item}
+
+        <section className="py-30 px-10 bg-black">
+          <h3 className="text-5xl mb-6 text-white">Our Expertise</h3>
+          <div className="expertise-grid flex flex-warp gap-4 items-center justify-center">
+            {expertiseItems.map((item, idx) => (
+              <div key={idx} className="expertise-circle-container p-4 ">
+                <div className="nut-container"
+                  onMouseEnter={() => setIsButtonHovered(true)}
+                  onMouseLeave={() => setIsButtonHovered(false)}>
+                  <div className="nut-hole"></div>
+                  <div className="nut-text">{item}</div>
                 </div>
-              ))}
+              </div>
+            ))}
+          </div>
+        </section>
+
+
+        <section className="py-16 px-10">
+          <div className="container mx-auto">
+            <h2 className="text-5xl mb-12">Our Vision and Mission</h2>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow"
+              onMouseEnter={() => setIsButtonHovered(true)}
+              onMouseLeave={() => setIsButtonHovered(false)}
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
+                    <FaLightbulb className="text-xl" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Our Vision</h3>
+                </div>
+                <p className="">
+                  To be the most trusted strategic communication partner for brands navigating complex markets and transformative change.
+                </p>
+              </div>
+
+              <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow"
+              onMouseEnter={() => setIsButtonHovered(true)}
+              onMouseLeave={() => setIsButtonHovered(false)}
+              >
+                <div className="flex items-center gap-4 mb-4">
+                  <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
+                    <FaBullseye className=" text-xl" />
+                  </div>
+                  <h3 className="text-xl font-semibold">Our Mission</h3>
+                </div>
+                <p>
+                  We are a public relations agency dedicated to advising brands, fostering innovation, and navigating challenges in sectors like health, technology, and more.
+                </p>
+              </div>
             </div>
           </div>
         </section>
 
-      <section className="py-16 px-10">
-        <div className="container mx-auto">
-          <h2 className="text-5xl text-white mb-12">Our Vision and Mission</h2>
 
-          <div className="grid md:grid-cols-2 gap-8">
-            <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-                  <FaLightbulb className="text-white text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Our Vision</h3>
-              </div>
-              <p className="text-gray-200">
-                To be the most trusted strategic communication partner for brands navigating complex markets and transformative change.
-              </p>
-            </div>
-
-            <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow">
-              <div className="flex items-center gap-4 mb-4">
-                <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
-                  <FaBullseye className="text-white text-xl" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Our Mission</h3>
-              </div>
-              <p className="text-gray-200">
-                We are a public relations agency dedicated to advising brands, fostering innovation, and navigating challenges in sectors like health, technology, and more.
-              </p>
-            </div>
+        <section className="py-16 px-10">
+          <div className="container mx-auto text-center">
+            <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
+            <p className="text-xl max-w-2xl mx-auto mb-8">
+              Let&apos;s collaborate to create powerful communication strategies that drive results.
+            </p>
+            <Link href="/connect">
+              <button
+                className="bg-white cursor-pointer md:cursor-none text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
+                onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
+                onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
+              >
+                Contact Our Team
+              </button>
+            </Link>
           </div>
-        </div>
-      </section>
-
-     
-      <section className="py-16 px-10 text-white">
-        <div className="container mx-auto text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to Transform Your Brand?</h2>
-          <p className="text-xl max-w-2xl mx-auto mb-8">
-            Let&apos;s collaborate to create powerful communication strategies that drive results.
-          </p>
-          <Link href="/connect">
-            <button
-              className="bg-white cursor-pointer text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
-              onMouseEnter={() => setIsButtonHovered(true)} // Set hover state on mouse enter
-              onMouseLeave={() => setIsButtonHovered(false)} // Reset hover state on mouse leave
-            >
-              Contact Our Team
-            </button>
-          </Link>
-        </div>
-      </section>
+        </section>
       </div>
 
 

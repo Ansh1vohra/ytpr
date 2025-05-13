@@ -6,16 +6,116 @@
 body {
   font-family: "Montserrat", sans-serif;
   font-optical-sizing: auto;
-  cursor: none;
+  transition: cursor 0.2s ease;
+}
+
+.cursor-none {
+  cursor: none !important;
 }
 
 @keyframes gradient-cycle {
+  0% { background-color: #fbffc5; } 
+  33% { background-color: #e6cfff; } 
+  66% { background-color: #ceffbe; } 
+  100% { background-color: #fbffc5; } 
+}
+
+/* @keyframes gradient-cycle {
   0% { background-color: #a00cea3c; } 
   33% { background-color: #2564eb3b; } 
   66% { background-color: #16a34a3c; } 
   100% { background-color: #a00cea3c; } 
-}
+} */
 
 .animate-gradient-cycle {
-  animation: gradient-cycle 9s ease infinite;
+  animation: gradient-cycle 19s ease infinite;
 }
+
+
+.oswald{
+  font-family: "Oswald",sans-serif;
+}
+
+
+.nut-container {
+  position: relative;
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 6px solid #fff;
+  background-color: transparent;
+  box-shadow: 0 0 0 6px #3d2b5f inset; /* Hollow ring effect */
+  transition: transform 0.4s ease;
+}
+
+.nut-container:hover {
+  transform: rotate(360deg);
+}
+
+.nut-hole {
+  position: absolute;
+  top: 25%;
+  left: 25%;
+  width: 50%;
+  height: 50%;
+  background-color: #3d2b5f;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.nut-text {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 2;
+}
+
+.hex-nut {
+  position: relative;
+  width: 160px;
+  height: 138px;
+  background-color: transparent;
+  clip-path: polygon(
+    50% 0%,
+    93% 25%,
+    93% 75%,
+    50% 100%,
+    7% 75%,
+    7% 25%
+  );
+  border: 4px solid #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.9s ease-in-out;
+}
+
+.hex-nut:hover {
+  transform: rotate(360deg);
+}
+
+.hex-nut .hole {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #3d2b5f; /* background color to simulate hole */
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.hex-nut .text {
+  position: absolute;
+  color: white;
+  font-size: 0.9rem;
+  text-align: center;
+  width: 80%;
+  z-index: 2;
+  pointer-events: none;
+}
+
