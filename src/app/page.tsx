@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import ImageSlider from "@/components/ImageSlider";
 import CustomCursor from "@/components/CustomCursor";
+import Image from "next/image";
 
 export default function HomePage() {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
@@ -141,8 +142,8 @@ export default function HomePage() {
 
             <div className="grid md:grid-cols-2 gap-8">
               <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow"
-              onMouseEnter={() => setIsButtonHovered(true)}
-              onMouseLeave={() => setIsButtonHovered(false)}
+                onMouseEnter={() => setIsButtonHovered(true)}
+                onMouseLeave={() => setIsButtonHovered(false)}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
@@ -156,8 +157,8 @@ export default function HomePage() {
               </div>
 
               <div className="backdrop-blur-sm bg-white/10 p-8 rounded-xl border border-white/20 shadow-lg hover:shadow-xl transition-shadow"
-              onMouseEnter={() => setIsButtonHovered(true)}
-              onMouseLeave={() => setIsButtonHovered(false)}
+                onMouseEnter={() => setIsButtonHovered(true)}
+                onMouseLeave={() => setIsButtonHovered(false)}
               >
                 <div className="flex items-center gap-4 mb-4">
                   <div className="bg-white/20 p-3 rounded-full backdrop-blur-sm">
@@ -190,6 +191,19 @@ export default function HomePage() {
               </button>
             </Link>
           </div>
+        </section>
+        <div className="h-8 bg-gradient-to-b from-animate-gradient-cycle to-black"></div>
+        <section className="relative py-4 bg-black flex overflow-hidden">
+          {/* Add a fading overlay at the top */}
+          {/* <div className="absolute inset-0 top-0 h-20 bg-gradient-to-b from-black to-transparent pointer-events-none z-10" /> */}
+
+          {/* Your images */}
+          <Image src='/ytprr.png' width={500} height={500} alt="Picture of the author" />
+          <Image src='/ytprr.png' className="-ml-[20px]" width={500} height={500} alt="Picture of the author" />
+          <Image src='/ytprr.png' className="-ml-[20px]" width={500} height={500} alt="Picture of the author" />
+          <Image src='/ytprr.png' className="-ml-[20px]" width={500} height={500} alt="Picture of the author" />
+          <Image src='/ytprr.png' className="-ml-[20px]" width={500} height={500} alt="Picture of the author" />
+          <Image src='/ytprr.png' className="-ml-[20px]" width={500} height={500} alt="Picture of the author" />
         </section>
       </div>
 
