@@ -18,6 +18,7 @@ export default function CareersPage() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   useEffect(() => {
+    console.log(hoverTarget);
     // Check for mobile devices
     const checkIfMobile = () => {
       const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
@@ -235,7 +236,7 @@ export default function CareersPage() {
 
             <div className="text-center mt-12">
               <p className="text-gray-600 mb-4">
-                Don't see your perfect role? We're always looking for talented individuals.
+                Don&apos;t see your perfect role? We&apos;re always looking for talented individuals.
               </p>
               <a
                 href="mailto:Hr@ytpr.in?subject=General Application"
