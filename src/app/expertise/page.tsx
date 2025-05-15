@@ -29,7 +29,7 @@ const OurExpertise = () => {
                 Our earned-first, culture-driven strategies are thoughtfully designed to inspire authentic engagement between brands and their audiences. We help brands build trust and lasting connections through ideas that resonate deeply with culture.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're known for</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re known for</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
@@ -79,10 +79,10 @@ const OurExpertise = () => {
             <div className="order-1 md:order-2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-900">Public Relations and Marketing</h2>
               <p className="text-lg mb-6 leading-relaxed">
-                From strategic earned media planning and media relations to influencer partnerships, digital marketing, social media strategy, and performance-driven campaigns — we expertly navigate the evolving media landscape to secure high-impact visibility for our clients' stories.
+                From strategic earned media planning and media relations to influencer partnerships, digital marketing, social media strategy, and performance-driven campaigns — we expertly navigate the evolving media landscape to secure high-impact visibility for our clients&apos; stories.
               </p>
               <p className="text-lg mb-8 leading-relaxed">
-                If storytelling is part creativity and part precision, we've perfected the balance. Our integrated media experts work seamlessly across paid, owned, and earned channels to ensure your brand connects with the right audience, in the right place, at the right moment.
+                If storytelling is part creativity and part precision, we&apos;ve perfected the balance. Our integrated media experts work seamlessly across paid, owned, and earned channels to ensure your brand connects with the right audience, in the right place, at the right moment.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
                 <h3 className="font-bold text-xl mb-4">What we're known for</h3>
@@ -123,7 +123,7 @@ const OurExpertise = () => {
                 We help brands shape, strengthen, and safeguard their reputations while driving measurable business outcomes. Our strategic communications approach blends planning, execution, predictive insights, and data-driven analytics to deliver long-term value.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're great at</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re great at</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
@@ -173,13 +173,13 @@ const OurExpertise = () => {
             <div className="order-1 md:order-2">
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-blue-900">Transactions and Transformation</h2>
               <p className="text-lg mb-6 leading-relaxed">
-                In today's evolving workplace, culture plays a critical role in shaping business outcomes. We advise companies through high-stakes transactions, mergers, and acquisitions, while offering robust financial communications and investor relations support.
+                In today&apos;s evolving workplace, culture plays a critical role in shaping business outcomes. We advise companies through high-stakes transactions, mergers, and acquisitions, while offering robust financial communications and investor relations support.
               </p>
               <p className="text-lg mb-8 leading-relaxed">
                 We help organizations unlock growth and enhance performance by making business more human—especially during periods of transformation and change. Our strategic communications support is designed to help companies balance short-term results with long-term reputation.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're great at</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re great at</h3>
                 <ul className="grid grid-cols-1 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
@@ -209,7 +209,7 @@ const OurExpertise = () => {
                 We specialize in guiding organizations through geopolitical shifts, crises, and policy changes across global markets. Leveraging AI-powered data monitoring, real-time scenario planning, and deep regional expertise, we help brands stay ahead of rapidly evolving challenges.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're great at</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re great at</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-purple-600 rounded-full mr-2"></span>
@@ -270,10 +270,10 @@ const OurExpertise = () => {
                 We help businesses lead with confidence in a polarized and fast-evolving world by blending public policy expertise, cultural intelligence, and data-driven communication strategies.
               </p>
               <p className="text-lg mb-8 leading-relaxed">
-                In today's increasingly complex global policy environment, businesses face growing challenges in making informed, confident decisions. We help leadership teams navigate the intersection of geopolitics, regulation, culture, and corporate reputation.
+                In today&apos;s increasingly complex global policy environment, businesses face growing challenges in making informed, confident decisions. We help leadership teams navigate the intersection of geopolitics, regulation, culture, and corporate reputation.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're great at</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re great at</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
