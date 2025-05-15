@@ -85,7 +85,7 @@ const OurExpertise = () => {
                 If storytelling is part creativity and part precision, we&apos;ve perfected the balance. Our integrated media experts work seamlessly across paid, owned, and earned channels to ensure your brand connects with the right audience, in the right place, at the right moment.
               </p>
               <div className="bg-gray-100 p-6 rounded-lg">
-                <h3 className="font-bold text-xl mb-4">What we're known for</h3>
+                <h3 className="font-bold text-xl mb-4">What we&apos;re known for</h3>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   <li className="flex items-center">
                     <span className="w-2 h-2 bg-blue-600 rounded-full mr-2"></span>
