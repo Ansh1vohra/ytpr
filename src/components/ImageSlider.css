@@ -100,6 +100,7 @@
 }
 
 .mobile-controls {
+  /* background-color: black; */
   position: absolute;
   top: 0;
   left: 0;
@@ -110,6 +111,7 @@
 }
 
 .touch-area {
+  /* background-color: #3b82f6; */
   flex: 1;
   pointer-events: auto;
 }
@@ -150,5 +152,9 @@
   .slides-group {
     padding: 0 1rem;
     gap: 1rem;
+  }
+
+  .dots-container{
+    display: none;
   }
 }

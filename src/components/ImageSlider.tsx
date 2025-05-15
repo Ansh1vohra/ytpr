@@ -54,42 +54,42 @@ const ImageSlider = () => {
   }, []);
 
   const nextSlide = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % (sliderData.length - 2));
+    const maxIndex = sliderData.length - (isMobile ? 1 : 3);
+    setIndex((prevIndex) => (prevIndex + 1) > maxIndex ? 0 : prevIndex + 1);
   };
-
+  
   const prevSlide = () => {
-    setIndex((prevIndex) =>
-      prevIndex === 0 ? sliderData.length - 3 : prevIndex - 1
-    );
+    const maxIndex = sliderData.length - (isMobile ? 1 : 3);
+    setIndex((prevIndex) => (prevIndex - 1) < 0 ? maxIndex : prevIndex - 1);
   };
 
   return (
-    <div 
+    <div
       className="slider-container"
     >
       {!isMobile && <CustomCursor isHovered={isHovered} />}
 
       <div className="slider">
-        {!isMobile && (
-          <button 
-            onClick={prevSlide} 
+        {/* {!isMobile && ( */}
+          <button
+            onClick={prevSlide}
             className="nav-btn left-4 hover:scale-110 transition-transform"
             aria-label="Previous slide"
           >
             <FiChevronLeft size={24} />
           </button>
-        )}
+        {/* )} */}
 
         <div className="slides-group">
-          {[index, index + 1, index + 2].map((slideIndex) => {
+          {(isMobile ? [index] : [index, index + 1, index + 2]).map((slideIndex) => {
             const item = sliderData[slideIndex % sliderData.length];
             return (
-              <div key={slideIndex} className="slide group" 
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}>
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
+              <div key={slideIndex} className="slide group"
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}>
+                <img
+                  src={item.image}
+                  alt={item.title}
                   className="w-full h-full object-cover transition-transform group-hover:scale-105 duration-300"
                 />
                 <div className="content">
@@ -103,15 +103,16 @@ const ImageSlider = () => {
           })}
         </div>
 
-        {!isMobile && (
-          <button 
-            onClick={nextSlide} 
+
+        {/* {!isMobile && ( */}
+          <button
+            onClick={nextSlide}
             className="nav-btn right-4 hover:scale-110 transition-transform"
             aria-label="Next slide"
           >
             <FiChevronRight size={24} />
           </button>
-        )}
+        {/* )} */}
       </div>
 
       {/* Mobile touch controls */}
@@ -121,6 +122,7 @@ const ImageSlider = () => {
           <div className="touch-area right" onClick={nextSlide} />
         </div>
       )}
+      
 
       {/* Dots indicator */}
       <div className="dots-container">
