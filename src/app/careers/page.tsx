@@ -110,30 +110,37 @@ export default function CareersPage() {
 
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-r from-blue-900 to-purple-900 text-white py-20 px-10">
+        <section className="relative bg-gradient-to-r from-blue-900 to-purple-900 text-white py-12 md:py-20 px-4 sm:px-6 lg:px-8">
           <div className="container mx-auto">
-            <div className="flex flex-col md:flex-row items-center gap-12">
-              <div className="md:w-1/2 space-y-6">
-                <h1 className="text-4xl md:text-5xl font-bold">Join Our Team</h1>
-                <p className="text-xl text-purple-200">
+            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12">
+              {/* Text Content */}
+              <div className="w-full md:w-1/2 space-y-4 md:space-y-6 text-center md:text-left">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight">
+                  Join Our Team
+                </h1>
+                <p className="text-lg sm:text-xl text-purple-200">
                   Collaborate with experts to drive change in public relations and make a meaningful impact.
                 </p>
-                <a
-                  href="mailto:Hr@ytpr.in"
-                  className="inline-block bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300"
-                  onMouseEnter={() => handleHover('cta-button')}
-                  onMouseLeave={handleHoverEnd}
-                >
-                  Hr@ytpr.in
-                </a>
+                <div className="flex justify-center md:justify-start">
+                  <a
+                    href="mailto:Hr@ytpr.in"
+                    className="inline-block bg-white text-blue-900 px-6 py-2 sm:px-8 sm:py-3 rounded-lg font-semibold hover:bg-gray-100 transition duration-300 text-sm sm:text-base"
+                    onMouseEnter={() => handleHover('cta-button')}
+                    onMouseLeave={handleHoverEnd}
+                  >
+                    Hr@ytpr.in
+                  </a>
+                </div>
               </div>
 
-              <div className="md:w-1/2 relative">
-                <div className="relative h-80 md:h-96 w-full rounded-xl overflow-hidden">
+              {/* Image Slider */}
+              <div className="w-full md:w-1/2 relative mt-8 md:mt-0">
+                <div className="relative h-64 sm:h-72 md:h-80 lg:h-96 w-full rounded-xl overflow-hidden">
                   {images.map((src, index) => (
                     <div
                       key={src}
-                      className={`absolute inset-0 transition-opacity duration-1000 ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'}`}
+                      className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
                     >
                       <Image
                         src={src}
@@ -141,10 +148,11 @@ export default function CareersPage() {
                         fill
                         className="object-cover"
                         priority={index === 0}
+                        sizes="(max-width: 768px) 100vw, 50vw"
                       />
                     </div>
                   ))}
-                  <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_30px_rgba(0,0,0,0.8)] pointer-events-none" />
+                  <div className="absolute inset-0 rounded-xl shadow-[inset_0_0_20px_rgba(0,0,0,0.6)] pointer-events-none" />
                 </div>
               </div>
             </div>
