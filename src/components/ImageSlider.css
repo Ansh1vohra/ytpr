@@ -148,13 +148,17 @@
   .slide {
     min-width: 100%;
   }
-  
+
   .slides-group {
     padding: 0 1rem;
     gap: 1rem;
   }
 
-  .dots-container{
+  .slide .content {
+    transform: translateY(0); /* Always show content on mobile */
+  }
+
+  .dots-container {
     display: none;
   }
 }
