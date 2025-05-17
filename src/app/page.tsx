@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import ImageSlider from "@/components/ImageSlider";
 import CustomCursor from "@/components/CustomCursor";
+import OurExpertise from "@/components/OurExpertise";
 import Image from "next/image";
 
 export default function HomePage() {
@@ -28,15 +29,6 @@ export default function HomePage() {
       title: "Advising the Bold. Amplifying the Brave",
       subtitle: "Building meaningful connections between brands and their audiences."
     }
-  ];
-
-  const expertiseItems = [
-    "Creative, design and content",
-    "Public relations and Marketing",
-    "Strategy planning and reputation",
-    "Transaction and Transformation",
-    "Crises and issues",
-    "Public Affairs and impact"
   ];
 
 
@@ -119,21 +111,7 @@ export default function HomePage() {
           </div>
         </section>
 
-        <section className="py-30 px-10 bg-black">
-          <h3 className="text-5xl mb-6 text-white">Our Expertise</h3>
-          <div className="expertise-grid flex flex-warp gap-4 items-center justify-center">
-            {expertiseItems.map((item, idx) => (
-              <div key={idx} className="expertise-circle-container p-4 ">
-                <div className="nut-container"
-                  onMouseEnter={() => setIsButtonHovered(true)}
-                  onMouseLeave={() => setIsButtonHovered(false)}>
-                  <div className="nut-hole"></div>
-                  <div className="nut-text">{item}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
+        <OurExpertise />
 
 
         <section className="py-16 px-10">
