@@ -44,7 +44,7 @@ export default function HomePage() {
     <div className="relative">
       <CustomCursor isHovered={isButtonHovered} />
 
-      <section className="relative text-white pt-[35vh] -mt-[95px]">
+      <section className="relative text-white pt-[35vh]">
         {/* Background images with fade transition */}
         {heroSlides.map((slide, index) => (
           <div
