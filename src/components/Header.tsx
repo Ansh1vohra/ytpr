@@ -126,17 +126,17 @@ export default function Header() {
   }, []);
 
 
-  const toKebabCase = (str: string) => {
-    return str.toLowerCase()
-      .replace(/&/g, 'and')
-      .replace(/\s+/g, '-')
-      .replace(/[^a-z0-9-]/g, '');
-  };
+  // const toKebabCase = (str: string) => {
+  //   return str.toLowerCase()
+  //     .replace(/&/g, 'and')
+  //     .replace(/\s+/g, '-')
+  //     .replace(/[^a-z0-9-]/g, '');
+  // };
 
-  // Helper function to get clean base path
-  const getBasePath = (path: string) => {
-    return path.replace(/#/g, '');
-  };
+  // // Helper function to get clean base path
+  // const getBasePath = (path: string) => {
+  //   return path.replace(/#/g, '');
+  // };
 
 
   const isCursorActive = isLogoHovered || isNavHovered;
