@@ -58,7 +58,7 @@ const CustomCursor: React.FC<CustomCursorProps> = ({ isHovered }) => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-16 h-16 rounded-full bg-white pointer-events-none z-[9999] backdrop-blur-sm flex items-center justify-center"
+      className="fixed top-0 left-0 w-13 h-13 rounded-full bg-white pointer-events-none z-[9999] backdrop-blur-sm flex items-center justify-center"
       style={{
         translateX: cursorX,
         translateY: cursorY,

@@ -69,7 +69,11 @@ export default function Header() {
             "Financial services",
             "Government & public sector",
             "Mobility & transportation",
-            "Technology",
+            "Technology"
+          ]
+        },{
+          title:"",
+          items:[
             "Retail & CPG",
             "Lifestyle & leisure",
             "Media & entertainment",
@@ -257,17 +261,18 @@ export default function Header() {
                     </div>
 
                     {/* Divider line */}
-                    <div className="w-px bg-gray-200"></div>
+                    <div className="w-[2px] bg-gray-800"></div>
 
                     {/* Right content - 75% width */}
                     <div className="w-3/4 p-8">
-                      <div className="grid grid-cols-2 gap-8">
+                      <div className="grid grid-cols-3 gap-8">
                         {link.subLinks.map((group, index) => (
                           <div key={`desktop-group-${index}`}>
                             <h3 className="text-gray-900 font-bold text-lg mb-6">{group.title}</h3>
                             <ul className="space-y-3">
                               {group.items.map((item, itemIndex) => {
-                                const basePath = link.path.replace(/#/g, '');
+                                // Ensure we use the correct base path for all links
+                                const basePath = link.path === '#' ? '/expertise' : link.path;
                                 const itemPath = `${basePath}/${item.toLowerCase()
                                   .replace(/&/g, 'and')
                                   .replace(/\s+/g, '-')
@@ -298,7 +303,7 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-
+      
       {/* Mobile Side Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -374,12 +379,11 @@ export default function Header() {
                                     </h3>
                                     <ul className="space-y-1">
                                       {group.items.map((item, itemIndex) => {
-                                        const basePath = link.path.replace(/#/g, '');
-                                        const itemPath = `${basePath}/${item.toLowerCase()
-                                          .replace(/&/g, 'and')
-                                          .replace(/\s+/g, '-')
-                                          .replace(/[^a-z0-9-]/g, '')}`;
-
+                                         const basePath = link.path === '#' ? '/expertise' : link.path;
+                                         const itemPath = `${basePath}/${item.toLowerCase()
+                                           .replace(/&/g, 'and')
+                                           .replace(/\s+/g, '-')
+                                           .replace(/[^a-z0-9-]/g, '')}`;
                                         return (
                                           <li key={`mobile-item-${itemIndex}`}>
                                             <Link

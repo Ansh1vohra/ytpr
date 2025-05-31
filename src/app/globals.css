@@ -1,6 +1,5 @@
 @import "tailwindcss";
 
-
 @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Cal+Sans&family=Lexend:wght@100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Oswald:wght@200..700&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Syne:wght@400..800&display=swap');
 
 body {
@@ -20,19 +19,48 @@ body {
   100% { background-color: #fbffc5; } 
 }
 
-/* @keyframes gradient-cycle {
-  0% { background-color: #a00cea3c; } 
-  33% { background-color: #2564eb3b; } 
-  66% { background-color: #16a34a3c; } 
-  100% { background-color: #a00cea3c; } 
-} */
-
 .animate-gradient-cycle {
   animation: gradient-cycle 19s ease infinite;
 }
 
-
-.oswald{
-  font-family: "Oswald",sans-serif;
+.oswald {
+  font-family: "Oswald", sans-serif;
 }
 
+@keyframes ticker-cycle {
+  0% {
+    transform: translateX(0);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: translateX(-50%);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateX(0);
+    animation-timing-function: ease-out;
+  }
+}
+
+.animate-ticker-cycle {
+  animation: ticker-cycle 80s infinite;
+}
+
+@keyframes ticker-cycle-reverse {
+  0% {
+    transform: translateX(-50%);
+    animation-timing-function: ease-out;
+  }
+  50% {
+    transform: translateX(0);
+    animation-timing-function: ease-in;
+  }
+  100% {
+    transform: translateX(-50%);
+    animation-timing-function: ease-out;
+  }
+}
+
+.animate-ticker-cycle-reverse {
+  animation: ticker-cycle-reverse 80s infinite;
+}

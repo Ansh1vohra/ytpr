@@ -62,14 +62,14 @@ export default function OurExpertise() {
     ]
 
     return (
-        <section className="py-30 px-10 bg-black">
+        <section className="py-30 px-10 bg-transparent">
             <CustomCursor isHovered={isButtonHovered} />
-            <h3 className="text-5xl mb-6 text-white">Our Expertise</h3>
+            <h3 className="text-5xl mb-10 text-black">Our Expertise</h3>
             <div className="expertise-grid flex flex-warp gap-20 items-center justify-center">
 
                 {expertiseItems.map((item, idx) => (
                     <div key={idx} className="expertise-circle-container relative">
-                        <svg viewBox="0 0 270 270" xmlns="http://www.w3.org/2000/svg" style={{ color: "white" }}  onMouseEnter={() => setIsButtonHovered(true)}
+                        <svg viewBox="0 0 270 270" xmlns="http://www.w3.org/2000/svg" style={{ color: "black" }}  onMouseEnter={() => setIsButtonHovered(true)}
                         onMouseLeave={() => setIsButtonHovered(false)}>
                             <path d="M0 135h30" stroke="currentColor"></path>
                             <path d="M2.0316 158.4475l29.5442 -5.2094" stroke="currentColor"></path>
