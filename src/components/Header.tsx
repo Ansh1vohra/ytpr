@@ -23,7 +23,7 @@ type NavLink = {
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
-  const [isNavHovered, setIsNavHovered] = useState(false);
+  // const [isNavHovered, setIsNavHovered] = useState(false);
   // const [isScrolled, setIsScrolled] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
@@ -169,7 +169,8 @@ export default function Header() {
   // };
 
 
-  const isCursorActive = isLogoHovered || isNavHovered;
+  // const isCursorActive = isLogoHovered || isNavHovered;
+  const isCursorActive = isLogoHovered ;
 
   const toggleMobileDropdown = (linkName: string) => {
     setMobileOpenDropdown(mobileOpenDropdown === linkName ? null : linkName);
