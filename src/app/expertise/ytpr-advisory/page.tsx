@@ -1,8 +1,10 @@
 'use client'
 import OurExpertise from "@/components/OurExpertise";
 import Image from "next/image";
-import { motion } from "framer-motion"; // NEW IMPORT
-
+import { motion } from "framer-motion";
+import { useState,useEffect } from "react";
+import CustomCursor from "@/components/CustomCursor";
+import { useRouter } from 'next/navigation';
 
 const advisoryData = {
     tagLine: "Guiding Leaders Through Complexity",
@@ -48,20 +50,47 @@ const imageReveal = {
 
 
 const YTPRAdvisory = () => {
+    const [isHovered, setIsHovered] = useState(false);
+    const isCursorActive = isHovered;
+    const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+    const router = useRouter();
+
+    useEffect(() => {
+        setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
+    }, []);
+
 
     return (
-        <div className="bg-white animate-gradient-cycle min-h-screen">
+        <div className="bg-white animate-gradient-cycle min-h-screen overflow-hidden">
+            {!isTouchDevice && <CustomCursor isHovered={isCursorActive} />}
             <motion.div
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
                 variants={fadeUp}
-                className="border-y-3 flex flex-col items-start px-8 md:px-25 pt-[80px] pb-[100px]"
-            >
-                <button className="border-2 rounded-full p-4 m-2 mb-4 text-sm">Expertise</button>
-                <p className="text-black max-w-4xl font-semibold tracking-wide text-6xl mb-2">
-                    {advisoryData.tagLine}
-                </p>
+                className="flex">
+                <motion.div
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true }}
+                    variants={fadeUp}
+                    className="md:w-[80vw] border-b-3 flex flex-col items-start px-8 md:px-25 pt-[80px] pb-[100px]"
+                >
+                    <button className="border-2 rounded-full p-4 m-2 mb-4 text-sm">Expertise</button>
+                    <p className="text-black max-w-4xl font-semibold tracking-wide text-5xl md:text-6xl mb-2">
+                        {advisoryData.tagLine}
+                    </p>
+                </motion.div>
+                <div className="flex items-end hidden md:flex">
+                    <Image
+                        src='/ytdesign4.png'
+                        alt="YT Design"
+                        width={400}
+                        height={400}
+                        className="max-w-[20vw] brightness-0"
+                    />
+                </div>
             </motion.div>
 
             <motion.div
@@ -71,10 +100,10 @@ const YTPRAdvisory = () => {
                 variants={containerStagger}
                 className="p-10 py-20"
             >
-                <motion.h1 variants={fadeUp} className="text-4xl md:text-2xl font-semibold text-black mb-15 m-5">
+                <motion.h1 variants={fadeUp} className="text-2xl md:text-3xl font-semibold text-black mb-15 m-5">
                     {advisoryData.title}
                 </motion.h1>
-                <motion.p variants={fadeUp} className="text-3xl text-gray-700 m-5 mb-8">
+                <motion.p variants={fadeUp} className="text-xl md:text-3xl text-gray-700 m-5 mb-8">
                     {advisoryData.intro}
                 </motion.p>
             </motion.div>
@@ -100,7 +129,12 @@ const YTPRAdvisory = () => {
                         ))} */}
 
                             <div className="mt-10">
-                                <button className="relative px-6 py-3 border-2 border-black rounded-full font-semibold group hover:bg-black hover:text-white transition-colors">
+                                <button
+                                    className="cursor-none relative px-6 py-3 border-2 border-black rounded-full font-semibold group hover:bg-black hover:text-white transition-colors"
+                                    onMouseEnter={() => setIsHovered(true)}
+                                    onMouseLeave={() => setIsHovered(false)}
+                                    onClick={() => router.push('/connect')}
+                                >
                                     Contact us to learn more
                                     <span className="ml-2 transition-transform group-hover:translate-x-1">→</span>
                                     <span className="absolute inset-0 rounded-full border-2 border-black translate-x-1 translate-y-1"></span>

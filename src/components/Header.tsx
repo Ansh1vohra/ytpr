@@ -18,6 +18,8 @@ type NavLink = {
   subLinks?: SubLinkGroup[] | null;
 };
 
+
+
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
@@ -27,6 +29,30 @@ export default function Header() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
+
+  // Add this helper function outside your component
+  function renderNavLink(link?: NavLink) {
+    if (!link) return null;
+
+    return link.subLinks ? (
+      <button
+        onClick={() => toggleDropdown(link.name)}
+        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group`}
+      >
+        {link.name}
+        <span className={`absolute cursor-pointer bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full`}></span>
+      </button>
+    ) : (
+      <Link
+        href={link.path}
+        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group`}
+        onClick={() => setActiveDropdown(null)}
+      >
+        {link.name}
+        <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full`}></span>
+      </Link>
+    );
+  }
 
   const navLinks: NavLink[] = [
     {
@@ -71,9 +97,9 @@ export default function Header() {
             "Mobility & transportation",
             "Technology"
           ]
-        },{
-          title:"",
-          items:[
+        }, {
+          title: "",
+          items: [
             "Retail & CPG",
             "Lifestyle & leisure",
             "Media & entertainment",
@@ -90,13 +116,13 @@ export default function Header() {
       subLinks: null
     },
     {
-      name: "Newsroom",
-      path: "/news",
+      name: "Shop",
+      path: "/shop",
       subLinks: null
     },
     {
-      name: "Shop",
-      path: "/shop",
+      name: "Newsroom",
+      path: "/news",
       subLinks: null
     },
     {
@@ -157,6 +183,15 @@ export default function Header() {
     <div className="sticky top-0 z-50" ref={headerRef}>
       {!isTouchDevice && <CustomCursor isHovered={isCursorActive} />}
 
+      <motion.div
+      className="sticky top-0 z-50"
+      ref={headerRef}
+      initial={{ opacity: 0, y: -40 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -40 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+    >
+
       <header className={`sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800 transition-all duration-300`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 font-[family-name:var(--font-geist-sans)]">
           <div className="flex justify-between items-center">
@@ -189,34 +224,39 @@ export default function Header() {
             </Link>
 
             <nav className="hidden md:block">
-              <ul className="flex gap-4 lg:gap-8">
-                {navLinks.map((link) => (
-                  <li key={link.path} className="relative"
-                    onMouseEnter={() => setIsNavHovered(true)}
-                    onMouseLeave={() => setIsNavHovered(false)}>
-                    {link.subLinks ? (
-                      <button
-                        onClick={() => toggleDropdown(link.name)}
-                        // Remove the onMouseEnter handler
-                        className={`text-white cursor-none hover:text-emerald-400 transition-colors font-medium text-base lg:text-lg tracking-wider relative group`}
-                      >
-                        {link.name}
-                        <span className={`absolute  cursor-none bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full`}></span>
-                      </button>
-                    ) : (
-                      <Link
-                        href={link.path}
-                        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-lg tracking-wider relative group`}
-                        onClick={() => setActiveDropdown(null)}
-                      >
-                        {link.name}
-                        <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full`}></span>
-                      </Link>
-                    )}
-                  </li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-3 gap-x-6 lg:gap-x-12 gap-y-1">
+                {/* Column 1 */}
+                <div className="flex flex-col ps-8 space-y-1"> 
+                  <div className="relative h-full flex items-center text-sm" >
+                    {renderNavLink(navLinks.find(link => link.name === "About"))}
+                  </div>
+                  <div className="relative h-full flex items-center">
+                    {renderNavLink(navLinks.find(link => link.name === "Shop"))}
+                  </div>
+                </div>
+
+                {/* Column 2 */}
+                <div className="flex flex-col space-y-1">
+                  <div className="relative h-full flex items-center">
+                    {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                  </div>
+                  <div className="relative h-full flex items-center">
+                    {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                  </div>
+                </div>
+
+                {/* Column 3 */}
+                <div className="flex flex-col space-y-1">
+                  <div className="relative h-full flex items-center">
+                    {renderNavLink(navLinks.find(link => link.name === "Careers"))}
+                  </div>
+                  <div className="relative h-full flex">
+                    {renderNavLink(navLinks.find(link => link.name === "Connect"))}
+                  </div>
+                </div>
+              </div>
             </nav>
+
 
             <button
               className="md:hidden focus:outline-none p-2"
@@ -235,6 +275,7 @@ export default function Header() {
           </div>
         </div>
       </header>
+      </motion.div>
 
       {/* Desktop Dropdown Overlay */}
       <AnimatePresence>
@@ -303,7 +344,7 @@ export default function Header() {
           </motion.div>
         )}
       </AnimatePresence>
-      
+
       {/* Mobile Side Menu */}
       <AnimatePresence>
         {isMenuOpen && (
@@ -379,11 +420,11 @@ export default function Header() {
                                     </h3>
                                     <ul className="space-y-1">
                                       {group.items.map((item, itemIndex) => {
-                                         const basePath = link.path === '#' ? '/expertise' : link.path;
-                                         const itemPath = `${basePath}/${item.toLowerCase()
-                                           .replace(/&/g, 'and')
-                                           .replace(/\s+/g, '-')
-                                           .replace(/[^a-z0-9-]/g, '')}`;
+                                        const basePath = link.path === '#' ? '/expertise' : link.path;
+                                        const itemPath = `${basePath}/${item.toLowerCase()
+                                          .replace(/&/g, 'and')
+                                          .replace(/\s+/g, '-')
+                                          .replace(/[^a-z0-9-]/g, '')}`;
                                         return (
                                           <li key={`mobile-item-${itemIndex}`}>
                                             <Link
