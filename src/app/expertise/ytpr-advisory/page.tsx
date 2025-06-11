@@ -168,11 +168,11 @@ const YTPRAdvisory = () => {
                     </div>
                 </div>
             </div>
-            <div className="flex flex-col md:flex-row">
+            <div className="flex flex-row">
                 {advisoryData.images.map((src, idx) => (
                     <motion.div
                         key={idx}
-                        className="relative w-full h-[100vh]"
+                        className="relative w-full h-[50vh] md:h-[85vh]"
                         variants={imageReveal}
                         initial="hidden"
                         whileInView="visible"
