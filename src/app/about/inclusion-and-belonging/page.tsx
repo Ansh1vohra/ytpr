@@ -1,26 +1,113 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
+import { motion, Variants } from "framer-motion";
 import Image from "next/image";
 import CustomCursor from "@/components/CustomCursor";
 
+const advisoryData = {
+  tagLine: "Inclusion & belonging",
+};
+
+// Animation variants
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6 },
+  },
+};
+
 const InclusionPage: React.FC = () => {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
+
+  useEffect(() => {
+    setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
+  }, []);
 
   return (
-    <div className="relative animate-gradient-cycle min-h-screen text-black">
-      <CustomCursor isHovered={isButtonHovered} />
+    <div className="relative min-h-screen text-black">
+      {!isTouchDevice && <CustomCursor isHovered={isButtonHovered} />}
+
+      {/* Hero Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="flex md:-mt-34 -mt-10" // Responsive negative margin
+      >
+        <motion.div
+          variants={itemVariants}
+          className="md:w-4/5 flex flex-col items-start px-8 md:px-24 pt-[290px] pb-[100px] border-b-[3px]" // Fixed md:px-25 to md:px-24
+        >
+          <motion.p
+            variants={itemVariants}
+            className="text-black max-w-4xl font-semibold tracking-wide text-5xl md:text-6xl mb-2"
+          >
+            {advisoryData.tagLine}
+          </motion.p>
+        </motion.div>
+        <motion.div
+          variants={imageVariants}
+          className="hidden md:flex items-end"
+        >
+          <Image
+            src="/ytdesign4.png"
+            alt="YT Design"
+            width={400}
+            height={400}
+            className="max-w-[20vw] brightness-0"
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Top Section */}
-      <section className="relative flex flex-col md:flex-row px-10 py-20">
-        {/* Left Side - Title and Tilted Image */}
-        <div className="md:w-1/3 flex flex-col justify-center items-center">
-          <h1 className="text-3xl md:text-3xl mb-8 text-black">
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="relative px-6 py-16 md:flex md:flex-row md:px-10"
+      >
+        <motion.div
+          variants={itemVariants}
+          className="md:w-1/3 flex flex-col justify-center items-center"
+        >
+          <h2 className="text-3xl mb-8 text-black font-semibold">
             Advancing our efforts…
-          </h1>
-          <div className="w-64 h-48 transform -rotate-12 shadow-lg border border-gray-200 rounded-xl overflow-hidden">
+          </h2>
+          <motion.div
+            variants={imageVariants}
+            className="w-64 h-48 transform -rotate-12 shadow-lg border border-gray-200 rounded-xl overflow-hidden"
+          >
             <Image
               src="/raimg1.jpg"
               alt="Inclusion initiative"
@@ -28,17 +115,12 @@ const InclusionPage: React.FC = () => {
               height={192}
               className="object-cover w-full h-full"
             />
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
-        {/* Vertical Line (Visible on medium screens and above) */}
-        <div
-          className="hidden md:block border-l border-black w-0 absolute left-1/3"
-          style={{ height: 'calc(100% - 5rem)' }}
-        ></div>
+        <div className="hidden md:block border-l border-black absolute left-1/3 h-[calc(100%-5rem)]" />
 
-        {/* Right Side - Paragraph Text */}
-        <div className="md:w-2/3 p-4 space-y-4">
+        <motion.div variants={itemVariants} className="md:w-2/3 p-4 space-y-6">
           <p className="text-xl text-gray-900 text-justify">
             Inclusion is one of our core values. We foster teams and environments built on belonging and an openness to possibility.
           </p>
@@ -51,205 +133,194 @@ const InclusionPage: React.FC = () => {
           <p className="text-xl font-bold text-gray-900 text-justify">
             We drive growth by embedding belonging in every corner of our culture and inclusion in every aspect of our work.
           </p>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
 
-      {/* Horizontal Line Below Section */}
-      <div className="w-full border-t border-black mx-10"></div>
+      <div className="w-full border-t border-black mx-6 md:mx-10" />
 
-      {/* Section with Three Horizontal Image-Text Blocks */}
-      <section className="w-full px-10 py-20">
+      {/* Three Horizontal Blocks */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="px-6 py-16 md:px-10"
+      >
         <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Block 1 */}
-          <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
-            <Image
-              src="/raimg1.jpg"
-              alt="Operationalizing inclusion"
-              width={400}
-              height={350}
-              className="w-full h-[350px] object-cover rounded-t-xl transition-transform duration-500 ease-in-out group-hover:rotate-[-6deg]"
-              style={{ transformOrigin: 'bottom right' }}
-            />
-            <div className="p-6 transition-transform duration-500 ease-in-out group-hover:translate-y-5">
-              <h2 className="text-xl font-semibold uppercase text-black">
-                Operationalizing inclusion on all fronts
-              </h2>
-              <p className="mt-2 text-gray-900 text-justify">
-                From sponsorship/mentoring programs to expanding BRGs, fostering a culture of inclusion for all while driving business impact.
-              </p>
-            </div>
-          </div>
-
-          {/* Block 2 */}
-          <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
-            <Image
-              src="/raimg1.jpg"
-              alt="Sense of belonging"
-              width={400}
-              height={350}
-              className="w-full h-[350px] object-cover rounded-t-xl transition-transform duration-500 ease-in-out group-hover:rotate-[-6deg]"
-              style={{ transformOrigin: 'bottom right' }}
-            />
-            <div className="p-6 transition-transform duration-500 ease-in-out group-hover:translate-y-5">
-              <h2 className="text-xl font-semibold uppercase text-black">
-                Creating a sense of belonging in every corner of our culture
-              </h2>
-              <p className="mt-2 text-gray-900 text-justify">
-                We’re committed to creating a workplace where all employees feel welcomed, empowered, and invested to stay and grow.
-              </p>
-            </div>
-          </div>
-
-          {/* Block 3 */}
-          <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
-            <Image
-              src="/raimg1.jpg"
-              alt="Embedding inclusive thinking"
-              width={400}
-              height={350}
-              className="w-full h-[350px] object-cover rounded-t-xl transition-transform duration-500 ease-in-out group-hover:rotate-[-6deg]"
-              style={{ transformOrigin: 'bottom right' }}
-            />
-            <div className="p-6 transition-transform duration-500 ease-in-out group-hover:translate-y-5">
-              <h2 className="text-xl font-semibold uppercase text-black">
-                Embedding inclusive thinking in our work
-              </h2>
-              <p className="mt-2 text-gray-900 text-justify">
-                And using the power of that work across our network to drive change.
-              </p>
-            </div>
-          </div>
+          {[
+            {
+              title: "Operationalizing inclusion on all fronts",
+              text: "From sponsorship/mentoring programs to expanding BRGs, fostering a culture of inclusion for all while driving business impact.",
+            },
+            {
+              title: "Creating a sense of belonging in every corner of our culture",
+              text: "We’re committed to creating a workplace where all employees feel welcomed, empowered, and invested to stay and grow.",
+            },
+            {
+              title: "Embedding inclusive thinking in our work",
+              text: "And using the power of that work across our network to drive change.",
+            },
+          ].map((block, index) => (
+            <motion.div
+              key={index}
+              variants={itemVariants}
+              className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group"
+            >
+              <motion.div variants={imageVariants}>
+                <Image
+                  src="/raimg1.jpg"
+                  alt={block.title}
+                  width={400}
+                  height={350}
+                  className="w-full h-[350px] object-cover rounded-t-xl transition-transform duration-500 group-hover:rotate-[-6deg]"
+                  style={{ transformOrigin: "bottom right" }}
+                />
+              </motion.div>
+              <div className="p-6 transition-transform duration-500 group-hover:translate-y-5">
+                <h3 className="text-xl font-semibold uppercase text-black">
+                  {block.title}
+                </h3>
+                <p className="mt-2 text-gray-900 text-justify">{block.text}</p>
+              </div>
+            </motion.div>
+          ))}
         </div>
-      </section>
+      </motion.section>
 
-      {/* Continuation Section - Title on Left, Three Blocks on Right */}
-      <section className="w-full px-10 py-20">
+      {/* Continuation Section */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="px-6 py-16 md:px-10"
+      >
         <div className="container mx-auto flex flex-col md:flex-row gap-12">
-          {/* Left Side - Title Only */}
-          <div className="md:w-1/3 flex items-start">
-            <h2 className="text-3xl md:text-3xl uppercase text-black">
+          <motion.div variants={itemVariants} className="md:w-1/3">
+            <h2 className="text-3xl uppercase text-black font-semibold">
               Fostering a culture of inclusion & belonging
             </h2>
-          </div>
-
-          {/* Right Side - Three Vertical Blocks */}
-          <div className="md:w-2/3 flex flex-col gap-8">
-            {/* Block 1 - 30+ Local Inclusion Councils */}
-            <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-              <Image
-                src="/raimg1.jpg"
-                alt="Local Inclusion Councils"
-                width={300}
-                height={300}
-                className="w-[300px] h-[300px] object-cover rounded-xl transition-transform duration-500 ease-in-out transform hover:rotate-6"
-                style={{ transformOrigin: '0 0' }}
-              />
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold uppercase text-black">
-                  30+ Local Inclusion Councils
-                </h2>
-                <p className="mt-2 text-gray-900 text-justify">
-                  Employees in local offices around the globe regularly meet and plan programming to encourage inclusion and engagement – from learning about different lived experiences through cultural celebrations and Brave Spaces to employees providing pro-bono support to local non-profit organizations.
-                </p>
-              </div>
-            </div>
-
-            <hr className="border-t border-black" />
-
-            {/* Block 2 - Business Resource Groups */}
-            <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-              <Image
-                src="/raimg1.jpg"
-                alt="Business Resource Groups"
-                width={300}
-                height={300}
-                className="w-[300px] h-[300px] object-cover rounded-xl transition-transform duration-500 ease-in-out transform hover:rotate-6"
-                style={{ transformOrigin: '0 0' }}
-              />
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold uppercase text-black">
-                  Business Resource Groups
-                </h2>
-                <p className="mt-2 text-gray-900 text-justify">
-                  Our Business Resource Groups (BRGs) are open to all employees. They not only unite and support employees and allies across North America, but also focus on ways to make business impact. They include AFIRE (Asian for Inclusion, Respect and Empowerment), EQUITABLE (employees with disabilities and chronic illness), LIGA (Latino Inclusion & Growth Alliance), NOIR (Nurturing Our Inclusion for Representation), and Q+ (LGBTQIA+ Guidance).
-                </p>
-              </div>
-            </div>
-
-            <hr className="border-t border-black" />
-
-            {/* Block 3 - C.O.N.N.E.C.T */}
-            <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
-              <Image
-                src="/raimg1.jpg"
-                alt="C.O.N.N.E.C.T Program"
-                width={300}
-                height={300}
-                className="w-[300px] h-[300px] object-cover rounded-xl transition-transform duration-500 ease-in-out transform hover:rotate-6"
-                style={{ transformOrigin: '0 0' }}
-              />
-              <div className="flex-1">
-                <h2 className="text-xl font-semibold uppercase text-black">
-                  C.O.N.N.E.C.T
-                </h2>
-                <p className="mt-2 text-gray-900 text-justify">
-                  Connecting Our Now and Next Executive and Creative Talent (CONNECT) is a senior-level sponsorship program supporting our high-performing, high-potential leaders focused on inclusion.
-                </p>
-              </div>
-            </div>
-          </div>
+          </motion.div>
+          <motion.div variants={containerVariants} className="md:w-2/3 flex flex-col gap-8">
+            {[
+              {
+                title: "30+ Local Inclusion Councils",
+                text: "Employees in local offices around the globe regularly meet and plan programming to encourage inclusion and engagement – from learning about different lived experiences through cultural celebrations and Brave Spaces to employees providing pro-bono support to local non-profit organizations.",
+              },
+              {
+                title: "Business Resource Groups",
+                text: "Our Business Resource Groups (BRGs) are open to all employees. They not only unite and support employees and allies across North America, but also focus on ways to make business impact. They include AFIRE (Asian for Inclusion, Respect and Empowerment), EQUITABLE (employees with disabilities and chronic illness), LIGA (Latino Inclusion & Growth Alliance), NOIR (Nurturing Our Inclusion for Representation), and Q+ (LGBTQIA+ Guidance).",
+              },
+              {
+                title: "C.O.N.N.E.C.T",
+                text: "Connecting Our Now and Next Executive and Creative Talent (CONNECT) is a senior-level sponsorship program supporting our high-performing, high-potential leaders focused on inclusion.",
+              },
+            ].map((block, index) => (
+              <motion.div key={index} variants={itemVariants}>
+                <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
+                  <motion.div variants={imageVariants}>
+                    <Image
+                      src="/raimg1.jpg"
+                      alt={block.title}
+                      width={300}
+                      height={300}
+                      className="w-[300px] h-[300px] object-cover rounded-xl transition-transform duration-500 hover:rotate-6"
+                      style={{ transformOrigin: "0 0" }}
+                    />
+                  </motion.div>
+                  <div className="flex-1 p-6">
+                    <h3 className="text-xl font-semibold uppercase text-black">
+                      {block.title}
+                    </h3>
+                    <p className="mt-2 text-gray-900 text-justify">{block.text}</p>
+                  </div>
+                </div>
+                {index < 2 && <hr className="border-t border-gray-300 my-8" />}
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
-      </section>
+      </motion.section>
 
-      {/* Call to Action Section */}
-      <section className="py-20 px-10 text-center">
+      {/* Call to Action */}
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 px-6 text-center"
+      >
         <div className="container mx-auto">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">
+          <motion.h2
+            variants={itemVariants}
+            className="text-4xl md:text-5xl font-bold mb-6 text-black"
+          >
             Join Our Inclusive Community
-          </h2>
-          <p className="text-xl text-gray-900 max-w-xl mx-auto mb-8">
+          </motion.h2>
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-gray-900 max-w-xl mx-auto mb-8"
+          >
             Let’s work together to build a community where everyone thrives.
-          </p>
+          </motion.p>
           <Link href="/connect">
-            <button
-              className="bg-white cursor-pointer md:cursor-pointer text-black px-5 py-3 rounded-lg font-semibold transition duration-300 hover:bg-gray-100 flex items-center gap-2 mx-auto"
+            <motion.button
+              variants={itemVariants}
+              className="bg-white text-black px-6 py-3 rounded-lg font-semibold transition duration-300 hover:bg-gray-100 flex items-center gap-2 mx-auto"
               onMouseEnter={() => setIsButtonHovered(true)}
               onMouseLeave={() => setIsButtonHovered(false)}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
             >
               Connect with Us <FaArrowRight />
-            </button>
+            </motion.button>
           </Link>
         </div>
-      </section>
+      </motion.section>
 
       {/* Ticker Section */}
-      <section className="w-full py-20 overflow-hidden">
-        {/* Top Ticker - White Background, Black Text */}
-        <div className="relative w-[110%] mx-[-5%] overflow-hidden bg-white py-12 transform" style={{ transform: 'rotate(-4deg)' }}>
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 overflow-hidden"
+      >
+        <motion.div
+          variants={itemVariants}
+          className="relative w-[110%] mx-[-5%] bg-white py-12 transform -rotate-4"
+        >
           <div className="animate-ticker-cycle whitespace-nowrap inline-block">
             {Array(50)
               .fill(null)
               .map((_, index) => (
-                <span key={index} className="text-5xl md:text-7xl font-bold text-black uppercase mx-4">
+                <span
+                  key={index}
+                  className="text-5xl md:text-7xl font-bold text-black uppercase mx-4"
+                >
                   Work at Young Thames
                 </span>
               ))}
           </div>
-        </div>
-
-        {/* Bottom Ticker - Black Background, White Text */}
-        <div className="relative w-[110%] mx-[-5%] overflow-hidden bg-black py-12 transform" style={{ transform: 'rotate(-4deg)' }}>
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          className="relative w-[110%] mx-[-5%] bg-black py-12 transform -rotate-4"
+        >
           <div className="animate-ticker-cycle-reverse whitespace-nowrap inline-block">
             {Array(50)
               .fill(null)
               .map((_, index) => (
-                <span key={index} className="text-5xl md:text-7xl font-bold text-white uppercase mx-4">
+                <span
+                  key={index}
+                  className="text-5xl md:text-7xl font-bold text-white uppercase mx-4"
+                >
                   Work at Young Thames
                 </span>
               ))}
           </div>
-        </div>
-      </section>
+        </motion.div>
+      </motion.section>
     </div>
   );
 };

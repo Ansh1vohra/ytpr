@@ -38,7 +38,7 @@ export default function RootLayout({
         <link rel="icon" type="image/x-icon" href="/Logo.png" />
       </head>
       <body
-        className={`${montserrat.variable} antialiased bg-gray-800 max-w-[100vw] overflow-x-hidden`}
+        className={`${montserrat.variable} antialiased animate-gradient-cycle max-w-[100vw] overflow-x-hidden`}
       >
         <CustomCursor isHovered={false} />
         <Header />

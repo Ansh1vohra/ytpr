@@ -37,7 +37,7 @@ export default function Header() {
     return link.subLinks ? (
       <button
         onClick={() => toggleDropdown(link.name)}
-        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group`}
+        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group inline-block`}
       >
         {link.name}
         <span className={`absolute cursor-pointer bottom-0 left-0 w-0 h-0.5 bg-emerald-400 transition-all group-hover:w-full`}></span>
@@ -45,7 +45,7 @@ export default function Header() {
     ) : (
       <Link
         href={link.path}
-        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group`}
+        className={`text-white cursor-pointer hover:text-emerald-400 transition-colors font-medium text-base lg:text-md tracking-wider relative group inline-block`}
         onClick={() => setActiveDropdown(null)}
       >
         {link.name}
@@ -130,6 +130,16 @@ export default function Header() {
       path: "/connect",
       subLinks: null
     },
+    {
+      name: "Reputation Capital AI",
+      path: "/reputation-capital-ai",
+      subLinks: null
+    },
+    {
+      name: "Social Media Performance",
+      path: "/social-media-performance",
+      subLinks: null
+    },
   ];
 
   useEffect(() => {
@@ -170,7 +180,7 @@ export default function Header() {
 
 
   // const isCursorActive = isLogoHovered || isNavHovered;
-  const isCursorActive = isLogoHovered ;
+  const isCursorActive = isLogoHovered;
 
   const toggleMobileDropdown = (linkName: string) => {
     setMobileOpenDropdown(mobileOpenDropdown === linkName ? null : linkName);
@@ -185,97 +195,93 @@ export default function Header() {
       {!isTouchDevice && <CustomCursor isHovered={isCursorActive} />}
 
       <motion.div
-      className="sticky top-0 z-50"
-      ref={headerRef}
-      initial={{ opacity: 0, y: -40 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, y: -40 }}
-      transition={{ duration: 0.6, ease: "easeOut" }}
-    >
+        className="sticky top-0 z-50"
+        ref={headerRef}
+        initial={{ opacity: 0, y: -40 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: -40 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
 
-      <header className={`sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800 transition-all duration-300`}>
-        <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 font-[family-name:var(--font-geist-sans)]">
-          <div className="flex justify-between items-center">
-            <Link
-              href="/"
-              className="flex items-center group"
-              onClick={() => {
-                setIsMenuOpen(false);
-                setActiveDropdown(null);
-              }}
-              onMouseEnter={() => setIsLogoHovered(true)}
-              onMouseLeave={() => setIsLogoHovered(false)}
-            >
-              <motion.div
-                animate={{
-                  scale: isLogoHovered ? 1.1 : 1,
-                  transition: { type: "spring", stiffness: 300 }
+        <header className={`sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800 transition-all duration-300`}>
+          <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 font-[family-name:var(--font-geist-sans)]">
+            <div className="flex justify-between items-center">
+              <Link
+                href="/"
+                className="flex items-center group"
+                onClick={() => {
+                  setIsMenuOpen(false);
+                  setActiveDropdown(null);
                 }}
-                className="w-32 md:w-38"
+                onMouseEnter={() => setIsLogoHovered(true)}
+                onMouseLeave={() => setIsLogoHovered(false)}
               >
-                <Image
-                  src={Logo}
-                  alt="Company Logo"
-                  width={150}
-                  height={150}
-                  priority
-                  className='brightness-0 invert cursor:pointer md:cursor-none'
-                />
-              </motion.div>
-            </Link>
+                <motion.div
+                  animate={{
+                    scale: isLogoHovered ? 1.1 : 1,
+                    transition: { type: "spring", stiffness: 300 }
+                  }}
+                  className="w-32 md:w-38"
+                >
+                  <Image
+                    src={Logo}
+                    alt="Company Logo"
+                    width={150}
+                    height={150}
+                    priority
+                    className='brightness-0 invert cursor:pointer md:cursor-none'
+                  />
+                </motion.div>
+              </Link>
 
-            <nav className="hidden md:block">
-              <div className="grid grid-cols-3 gap-x-6 lg:gap-x-12 gap-y-1">
-                {/* Column 1 */}
-                <div className="flex flex-col ps-8 space-y-1"> 
-                  <div className="relative h-full flex items-center text-sm" >
-                    {renderNavLink(navLinks.find(link => link.name === "About"))}
-                  </div>
-                  <div className="relative h-full flex items-center">
-                    {renderNavLink(navLinks.find(link => link.name === "Shop"))}
+              <nav className="hidden md:block">
+                {/* Table-like navigation layout with auto-sizing columns */}
+                <div className="flex justify-end">
+                  <div className="grid grid-flow-col auto-cols-max gap-x-10">
+                    {/* Column 1 */}
+                    <div className="flex flex-col space-y-3 min-w-0">
+                      {renderNavLink(navLinks.find(link => link.name === "About"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Shop"))}
+                    </div>
+                    
+                    {/* Column 2 */}
+                    <div className="flex flex-col space-y-3 min-w-0">
+                      {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Careers"))}
+                    </div>
+                    
+                    {/* Column 3 */}
+                    <div className="flex flex-col space-y-3 min-w-0">
+                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
+                    </div>
+                    
+                    {/* Column 4 */}
+                    <div className="flex flex-col space-y-3 min-w-0">
+                      {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Social Media Performance"))}
+                    </div>
                   </div>
                 </div>
+              </nav>
 
-                {/* Column 2 */}
-                <div className="flex flex-col space-y-1">
-                  <div className="relative h-full flex items-center">
-                    {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
-                  </div>
-                  <div className="relative h-full flex items-center">
-                    {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
-                  </div>
-                </div>
-
-                {/* Column 3 */}
-                <div className="flex flex-col space-y-1">
-                  <div className="relative h-full flex items-center">
-                    {renderNavLink(navLinks.find(link => link.name === "Careers"))}
-                  </div>
-                  <div className="relative h-full flex">
-                    {renderNavLink(navLinks.find(link => link.name === "Connect"))}
-                  </div>
-                </div>
-              </div>
-            </nav>
-
-
-            <button
-              className="md:hidden focus:outline-none p-2"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              aria-expanded={isMenuOpen}
-            >
-              <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                {isMenuOpen ? (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                ) : (
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                )}
-              </svg>
-            </button>
+              <button
+                className="md:hidden focus:outline-none p-2"
+                onClick={() => setIsMenuOpen(!isMenuOpen)}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
+              >
+                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  {isMenuOpen ? (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  ) : (
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  )}
+                </svg>
+              </button>
+            </div>
           </div>
-        </div>
-      </header>
+        </header>
       </motion.div>
 
       {/* Desktop Dropdown Overlay */}

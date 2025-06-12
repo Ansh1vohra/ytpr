@@ -65,7 +65,7 @@ export default function OurExpertise() {
         <section className="py-30 px-10 bg-transparent">
             <CustomCursor isHovered={isButtonHovered} />
             <h3 className="text-5xl mb-10 text-black">Our Expertise</h3>
-            <div className="expertise-grid flex flex-warp gap-20 items-center justify-center">
+            <div className="expertise-grid flex flex-warp gap-0 items-center justify-center">
 
                 {expertiseItems.map((item, idx) => (
                     <div key={idx} className="expertise-circle-container relative">
