@@ -135,7 +135,7 @@ export default function Header() {
     },
     {
       name: "Newsroom",
-      path: "/news",
+      path: "/newsroom",
       subLinks: null
     },
     {
