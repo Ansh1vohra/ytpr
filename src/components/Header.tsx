@@ -113,21 +113,6 @@ export default function Header() {
     {
       name: "Careers",
       path: "/careers",
-      subLinks: null
-    },
-    {
-      name: "Shop",
-      path: "/shop",
-      subLinks: null
-    },
-    {
-      name: "Newsroom",
-      path: "/news",
-      subLinks: null
-    },
-    {
-      name: "Connect",
-      path: "/connect",
       subLinks: [{
         title: "",
         items: [
@@ -142,6 +127,21 @@ export default function Header() {
           "Employee stories"
         ]
       }]
+    },
+    {
+      name: "Shop",
+      path: "/shop",
+      subLinks: null
+    },
+    {
+      name: "Newsroom",
+      path: "/news",
+      subLinks: null
+    },
+    {
+      name: "Connect",
+      path: "/connect",
+      subLinks: null
     },
     {
       name: "Reputation Capital AI",
