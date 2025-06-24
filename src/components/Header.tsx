@@ -128,7 +128,20 @@ export default function Header() {
     {
       name: "Connect",
       path: "/connect",
-      subLinks: null
+      subLinks: [{
+        title: "",
+        items: [
+          "Current Opportunities",
+          "Inclusion and Belonging"
+        ]
+      },
+      {
+        title: "",
+        items: [
+          "Work At YTPR",
+          "Employee stories"
+        ]
+      }]
     },
     {
       name: "Reputation Capital AI",
@@ -236,26 +249,26 @@ export default function Header() {
 
               <nav className="hidden md:block">
                 {/* Table-like navigation layout with auto-sizing columns */}
-                <div className="flex justify-end">
+                <div className="flex justify-end text-center">
                   <div className="grid grid-flow-col auto-cols-max gap-x-10">
                     {/* Column 1 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "About"))}
                       {renderNavLink(navLinks.find(link => link.name === "Shop"))}
                     </div>
-                    
+
                     {/* Column 2 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
                       {renderNavLink(navLinks.find(link => link.name === "Careers"))}
                     </div>
-                    
+
                     {/* Column 3 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
                       {renderNavLink(navLinks.find(link => link.name === "Connect"))}
                     </div>
-                    
+
                     {/* Column 4 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
