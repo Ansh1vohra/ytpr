@@ -307,14 +307,14 @@ export default function HomePage() {
           </div>
         </motion.section>
 
-        <motion.div 
+        {/* <motion.div 
           className="h-8 bg-gradient-to-b from-animate-gradient-cycle to-black"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-        />
+        /> */}
 
-        <motion.section 
+        {/* <motion.section 
           className="relative py-4 bg-black flex overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -363,7 +363,7 @@ export default function HomePage() {
             height={500} 
             alt="Client logo"
           />
-        </motion.section>
+        </motion.section> */}
       </motion.div>
     </div>
   );

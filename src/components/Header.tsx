@@ -74,7 +74,7 @@ export default function Header() {
       path: "#",
       subLinks: [
         {
-          title: "Services",
+          title: "services",
           items: [
             "Public affairs & impact",
             "Crisis & issues",
@@ -88,7 +88,7 @@ export default function Header() {
           ]
         },
         {
-          title: "Sectors",
+          title: "sectors",
           items: [
             "Health",
             "Food & beverage",
@@ -333,7 +333,12 @@ export default function Header() {
                             <ul className="space-y-3">
                               {group.items.map((item, itemIndex) => {
                                 // Ensure we use the correct base path for all links
-                                const basePath = link.path === '#' ? '/expertise' : link.path;
+                                let basePath = link.path === '#' ? '/expertise' : link.path;
+                                if (group.title){
+                                  basePath = link.path === '#' ? `/expertise/${group.title}` : link.path;
+                                }else{
+                                  basePath = link.path === '#' ? `/expertise/sectors` : link.path;
+                                }
                                 const itemPath = `${basePath}/${item.toLowerCase()
                                   .replace(/&/g, 'and')
                                   .replace(/\s+/g, '-')
