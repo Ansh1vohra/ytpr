@@ -45,10 +45,17 @@ const EmployeeStoriesPage: React.FC = () => {
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [hoveredImage, setHoveredImage] = useState<string | null>(null);
   const [currentTextIndex, setCurrentTextIndex] = useState(0);
+  const [isCursorHovered, setIsCursorHovered] = useState(false);
 
   useEffect(() => {
     setIsTouchDevice("ontouchstart" in window || navigator.maxTouchPoints > 0);
   }, []);
+
+  // Update cursor hover state whenever an image is hovered
+  useEffect(() => {
+    setIsCursorHovered(hoveredImage !== null);
+  }, [hoveredImage]);
+
 
   const texts = [
     "Embracing cultures, ever-changing socio-economic and political situations, engaging with people of different backgrounds and needs is what will keep us ahead, and give us the intelligence to provide for our personal and business experience.",
@@ -122,7 +129,7 @@ const EmployeeStoriesPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen text-black">
-      {!isTouchDevice && <CustomCursor />}
+      {!isTouchDevice && <CustomCursor isHovered={isCursorHovered} />}
 
       {/* Hero Section */}
       <motion.div
