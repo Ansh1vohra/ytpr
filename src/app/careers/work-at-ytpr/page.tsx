@@ -165,7 +165,7 @@ const WorkAtYTPRPage: React.FC = () => {
 
   return (
     <div className="relative min-h-screen text-black">
-      {!isTouchDevice && <CustomCursor />}
+      {/* {!isTouchDevice && <CustomCursor />} */}
 
       {/* Hero Section */}
       <motion.div
@@ -416,6 +416,49 @@ const WorkAtYTPRPage: React.FC = () => {
           </motion.div>
         </div>
       </motion.div>
+
+      <motion.section
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        className="py-16 overflow-hidden"
+      >
+        <motion.div
+          variants={itemVariants}
+          className="relative w-[110%] mx-[-5%] bg-white py-12 transform -rotate-4"
+        >
+          <div className="animate-ticker-cycle whitespace-nowrap inline-block">
+            {Array(50)
+              .fill(null)
+              .map((_, index) => (
+                <span
+                  key={index}
+                  className="text-5xl md:text-7xl font-bold text-black uppercase mx-4"
+                >
+                  Work at Young Thames
+                </span>
+              ))}
+          </div>
+        </motion.div>
+        <motion.div
+          variants={itemVariants}
+          className="relative w-[110%] mx-[-5%] bg-black py-12 transform -rotate-4"
+        >
+          <div className="animate-ticker-cycle-reverse whitespace-nowrap inline-block">
+            {Array(50)
+              .fill(null)
+              .map((_, index) => (
+                <span
+                  key={index}
+                  className="text-5xl md:text-7xl font-bold text-white uppercase mx-4"
+                >
+                  Work at Young Thames
+                </span>
+              ))}
+          </div>
+        </motion.div>
+      </motion.section>
 
       {/* Additional Padding/Space */}
       <div className="w-full py-12"></div>
