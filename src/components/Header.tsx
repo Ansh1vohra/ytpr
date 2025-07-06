@@ -129,8 +129,8 @@ export default function Header() {
       }]
     },
     {
-      name: "Shop",
-      path: "/shop",
+      name: "Consumer Insights Shop",
+      path: "/consumer-insights-shop",
       subLinks: null
     },
     {
@@ -149,9 +149,12 @@ export default function Header() {
       subLinks: null
     },
     {
-      name: "Social Media Performance",
-      path: "/social-media-performance",
-      subLinks: null
+      name: "Our People",
+      path: "/our-people",
+      subLinks: [{
+        title: "",
+        items: ["Leadership", "Inclusion and belonging"]
+      }]
     },
   ];
 
@@ -248,35 +251,63 @@ export default function Header() {
               </Link>
 
               <nav className="hidden md:block">
-                {/* Table-like navigation layout with auto-sizing columns */}
-                <div className="flex justify-end text-center">
+                <table>
+                  <tr>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "About"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
+                    </td>
+                  </tr>
+                  <tr>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Our People"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Careers"))}
+                    </td>
+                    <td className="p-1 px-4">
+                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
+                    </td>
+                  </tr>
+                </table>
+              </nav>
+
+              {/* <nav className="hidden md:block">
+                <div className="flex justify-end">
                   <div className="grid grid-flow-col auto-cols-max gap-x-10">
-                    {/* Column 1 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "About"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Shop"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Our People"))}
                     </div>
 
-                    {/* Column 2 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                    </div>
+
+                    <div className="flex flex-col space-y-3 min-w-0">
+                      {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
                       {renderNavLink(navLinks.find(link => link.name === "Careers"))}
                     </div>
 
-                    {/* Column 3 */}
-                    <div className="flex flex-col space-y-3 min-w-0">
-                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
-                    </div>
-
-                    {/* Column 4 */}
                     <div className="flex flex-col space-y-3 min-w-0">
                       {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Social Media Performance"))}
+                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
                     </div>
                   </div>
                 </div>
-              </nav>
+              </nav> */}
 
               <button
                 className="md:hidden focus:outline-none p-2"
@@ -334,9 +365,9 @@ export default function Header() {
                               {group.items.map((item, itemIndex) => {
                                 // Ensure we use the correct base path for all links
                                 let basePath = link.path === '#' ? '/expertise' : link.path;
-                                if (group.title){
+                                if (group.title) {
                                   basePath = link.path === '#' ? `/expertise/${group.title}` : link.path;
-                                }else{
+                                } else {
                                   basePath = link.path === '#' ? `/expertise/sectors` : link.path;
                                 }
                                 const itemPath = `${basePath}/${item.toLowerCase()
