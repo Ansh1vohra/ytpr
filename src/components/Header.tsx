@@ -74,7 +74,7 @@ export default function Header() {
       path: "#",
       subLinks: [
         {
-          title: "services",
+          title: "Services",
           items: [
             "Public affairs & impact",
             "Crisis & issues",
@@ -88,7 +88,7 @@ export default function Header() {
           ]
         },
         {
-          title: "sectors",
+          title: "Sectors",
           items: [
             "Health",
             "Food & beverage",
@@ -362,13 +362,13 @@ export default function Header() {
                       <div className="grid grid-cols-3 gap-8">
                         {link.subLinks.map((group, index) => (
                           <div key={`desktop-group-${index}`}>
-                            <h3 className="text-gray-900 font-bold text-lg mb-6">{group.title}</h3>
+                            <h3 className="text-gray-900 font-bold text-xl mb-6">{group.title}</h3>
                             <ul className="space-y-3">
                               {group.items.map((item, itemIndex) => {
                                 // Ensure we use the correct base path for all links
                                 let basePath = link.path === '#' ? '/expertise' : link.path;
                                 if (group.title) {
-                                  basePath = link.path === '#' ? `/expertise/${group.title}` : link.path;
+                                  basePath = link.path === '#' ? `/expertise/${group.title.toLowerCase()}` : link.path;
                                 } else {
                                   basePath = link.path === '#' ? `/expertise/sectors` : link.path;
                                 }

@@ -79,18 +79,18 @@ export default function ExpertisePage({ params }: { params: Promise<{ type: stri
                     variants={fadeUp}
                     className="md:w-[80vw] border-b-3 flex flex-col items-start px-8 md:px-25 pt-[80px] pb-[100px]"
                 >
-                    <button className="border-2 rounded-full p-4 m-2 mb-4 text-sm">Expertise</button>
+                    <button className="border-2 rounded-full p-8 m-2 mb-4 text-2xl hover:bg-black hover:text-white">Expertise</button>
                     <p className="text-black max-w-4xl font-semibold tracking-wide text-5xl md:text-6xl mb-2">
                         {expertiseItem.tagLine}
                     </p>
                 </motion.div>
                 <div className="flex items-end hidden md:flex">
                     <Image
-                        src='/ytdesign4.png'
+                        src='/ytdesign7.png'
                         alt="YT Design"
                         width={400}
                         height={400}
-                        className="max-w-[20vw] brightness-0"
+                        className="max-w-[20vw] brightness-0 absolute ms-[-40px]"
                     />
                 </div>
             </motion.div>
