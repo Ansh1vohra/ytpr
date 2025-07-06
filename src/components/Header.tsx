@@ -252,34 +252,36 @@ export default function Header() {
 
               <nav className="hidden md:block">
                 <table>
-                  <tr>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "About"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Our People"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Careers"))}
-                    </td>
-                    <td className="p-1 px-4">
-                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
-                    </td>
-                  </tr>
+                  <tbody>
+                    <tr>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "About"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Careers"))}
+                      </td>
+                    </tr>
+                    <tr>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Our People"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                      </td>
+                      <td className="p-1 px-4">
+                        {renderNavLink(navLinks.find(link => link.name === "Connect"))}
+                      </td>
+                    </tr>
+                  </tbody>
                 </table>
               </nav>
 
