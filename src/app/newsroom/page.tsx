@@ -1,20 +1,87 @@
 "use client";
 
 import React, { useState } from "react";
+import { motion, Variants } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import CustomCursor from "@/components/CustomCursor";
 
-const InclusionPage: React.FC = () => {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 40 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring",
+      damping: 20,
+      stiffness: 100,
+    },
+  },
+};
+
+const imageVariants: Variants = {
+  hidden: { opacity: 0, scale: 0.8 },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    transition: { duration: 0.6 },
+  },
+};
+
+const NewsroomPage: React.FC = () => {
   const [isButtonHovered, setIsButtonHovered] = useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   return (
     <div className="relative animate-gradient-cycle min-h-screen text-black">
       <CustomCursor isHovered={isButtonHovered} />
 
-      {/* Horizontal Line Below Section */}
-      <div className="w-full border-t border-black mx-10"></div>
+      {/* Hero Section */}
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true }}
+        variants={containerVariants}
+        className="flex md:-mt-34 -mt-10"
+      >
+        <motion.div
+          variants={itemVariants}
+          className="md:w-4/5 flex flex-col items-start px-10 md:px-24 pt-[290px] pb-[100px] border-b-[3px] border-black"
+        >
+          <button className="border-2 border-black rounded-full p-4 m-2 mb-4 text-sm hover:bg-gray-100 transition duration-300">
+            Join us
+          </button>
+          <motion.p
+            variants={itemVariants}
+            className="text-black max-w-4xl font-semibold tracking-wide text-5xl md:text-6xl mb-2"
+          >
+            Newsroom
+          </motion.p>
+        </motion.div>
+        <motion.div
+          variants={imageVariants}
+          className="hidden md:flex items-end"
+        >
+          <Image
+            src="/ytdesign4.png"
+            alt="YT Design"
+            width={400}
+            height={400}
+            className="max-w-[20vw] brightness-0"
+          />
+        </motion.div>
+      </motion.div>
 
       {/* Section with Three Horizontal Image-Text Blocks */}
       <section className="w-full px-10 py-20">
@@ -81,7 +148,7 @@ const InclusionPage: React.FC = () => {
         </div>
       </section>
 
-      {/* Continuation Section - Title on Left, Three Blocks on Right */}
+      {/* Continuation Section - Title on Left, Blocks on Right */}
       <section className="w-full px-10 py-20">
         <div className="container mx-auto flex flex-col md:flex-row gap-12">
           {/* Left Side - Title and Dropdown */}
@@ -89,18 +156,47 @@ const InclusionPage: React.FC = () => {
             <h2 className="text-3xl md:text-3xl uppercase text-black">
               News by category
             </h2>
-            <select
-              className="mt-4 w-full md:w-48 bg-white border border-gray-300 rounded-4xl shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-black [&>option]:bg-white [&>option]:text-black [&>option:checked]:bg-black [&>option:checked]:text-white py-4 px-4 appearance-none custom-select"
-            >
-              <option value="view-all">View all</option>
-              <option value="announcements">Announcements</option>
-              <option value="award-coverage">Awards coverage</option>
-              <option value="insights">Insights</option>
-              <option value="povs">POVs</option>
-            </select>
+            <div className="relative mt-4 w-full md:w-48">
+              <select
+                className="w-full md:w-48 bg-white border border-gray-300 rounded-4xl shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400 text-black [&>option]:bg-white [&>option]:text-black [&>option:checked]:bg-black [&>option:checked]:text-white py-4 px-4 appearance-none custom-select"
+                style={{ direction: 'ltr' }}
+                onFocus={() => setIsDropdownOpen(true)}
+                onBlur={() => setIsDropdownOpen(false)}
+                onChange={() => setIsDropdownOpen(false)}
+              >
+                <option value="view-all">View all</option>
+                <option value="announcements">Announcements</option>
+                <option value="award-coverage">Awards coverage</option>
+                <option value="insights">Insights</option>
+                <option value="povs">POVs</option>
+              </select>
+              <span
+                className="absolute right-4 top-1/2 transform -translate-y-1/2 pointer-events-none"
+                style={{
+                  transition: 'transform 0.3s ease',
+                  transform: isDropdownOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                }}
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M19 9l-7 7-7-7"
+                  />
+                </svg>
+              </span>
+            </div>
           </div>
 
-          {/* Right Side - Three Vertical Blocks */}
+          {/* Right Side - Vertical Blocks */}
           <div className="md:w-2/3 flex flex-col gap-8">
             {/* Block 1 - 30+ Local Inclusion Councils */}
             <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
@@ -212,8 +308,6 @@ const InclusionPage: React.FC = () => {
 
             <hr className="border-t border-black" />
 
-
-
             {/* Block 6 - C.O.N.N.E.C.T */}
             <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
               <Image
@@ -261,4 +355,4 @@ const InclusionPage: React.FC = () => {
   );
 };
 
-export default InclusionPage;
+export default NewsroomPage;
