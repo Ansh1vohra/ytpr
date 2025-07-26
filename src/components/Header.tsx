@@ -18,19 +18,14 @@ type NavLink = {
   subLinks?: SubLinkGroup[] | null;
 };
 
-
-
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLogoHovered, setIsLogoHovered] = useState(false);
-  // const [isNavHovered, setIsNavHovered] = useState(false);
-  // const [isScrolled, setIsScrolled] = useState(false);
   const [isTouchDevice, setIsTouchDevice] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileOpenDropdown, setMobileOpenDropdown] = useState<string | null>(null);
   const headerRef = useRef<HTMLDivElement>(null);
 
-  // Add this helper function outside your component
   function renderNavLink(link?: NavLink) {
     if (!link) return null;
 
@@ -64,8 +59,8 @@ export default function Header() {
           items: ["Value", "Location", "Impact"]
         },
         {
-          title: "Our People",
-          items: ["Leadership", "Inclusion and belonging", "News and Insights"]
+          title: "",
+          items: ["Leadership", "Inclusion and Belonging", "News and Insights"]
         }
       ]
     },
@@ -78,13 +73,11 @@ export default function Header() {
           items: [
             "Public affairs & impact",
             "Crisis & issues",
-            "Transactions & transformations",
-            "Strategy & reputation",
             "Public relations & marketing",
             "Creative, design & content",
             "Insights & analytics",
-            "Generative AI",
-            "YTPR Advisory"
+            "Gen Goodwill AI",
+            "YT Advisory"
           ]
         },
         {
@@ -97,7 +90,8 @@ export default function Header() {
             "Mobility & transportation",
             "Technology"
           ]
-        }, {
+        },
+        {
           title: "",
           items: [
             "Retail & CPG",
@@ -144,8 +138,8 @@ export default function Header() {
       subLinks: null
     },
     {
-      name: "Reputation Capital AI",
-      path: "/reputation-capital-ai",
+      name: "Gen Goodwill AI",
+      path: "/gen-goodwill-ai",
       subLinks: null
     },
     {
@@ -161,10 +155,6 @@ export default function Header() {
   useEffect(() => {
     setIsTouchDevice('ontouchstart' in window || navigator.maxTouchPoints > 0);
 
-    // const handleScroll = () => {
-    //   setIsScrolled(window.scrollY > 10);
-    // };
-
     const handleClickOutside = (event: MouseEvent) => {
       if (headerRef.current && !headerRef.current.contains(event.target as Node)) {
         setActiveDropdown(null);
@@ -172,30 +162,13 @@ export default function Header() {
       }
     };
 
-    // window.addEventListener('scroll', handleScroll);
     document.addEventListener('mousedown', handleClickOutside);
 
     return () => {
-      // window.removeEventListener('scroll', handleScroll);
       document.removeEventListener('mousedown', handleClickOutside);
     };
   }, []);
 
-
-  // const toKebabCase = (str: string) => {
-  //   return str.toLowerCase()
-  //     .replace(/&/g, 'and')
-  //     .replace(/\s+/g, '-')
-  //     .replace(/[^a-z0-9-]/g, '');
-  // };
-
-  // // Helper function to get clean base path
-  // const getBasePath = (path: string) => {
-  //   return path.replace(/#/g, '');
-  // };
-
-
-  // const isCursorActive = isLogoHovered || isNavHovered;
   const isCursorActive = isLogoHovered;
 
   const toggleMobileDropdown = (linkName: string) => {
@@ -218,113 +191,92 @@ export default function Header() {
         exit={{ opacity: 0, y: -40 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-
-        <header className={`sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800 transition-all duration-300`}>
-          <div className="container mx-auto px-4 sm:px-6 lg:px-12 py-4 sm:py-6 font-[family-name:var(--font-geist-sans)]">
-            <div className="flex justify-between items-center">
-              <Link
-                href="/"
-                className="flex items-center group"
-                onClick={() => {
-                  setIsMenuOpen(false);
-                  setActiveDropdown(null);
-                }}
-                onMouseEnter={() => setIsLogoHovered(true)}
-                onMouseLeave={() => setIsLogoHovered(false)}
-              >
-                <motion.div
-                  animate={{
-                    scale: isLogoHovered ? 1.1 : 1,
-                    transition: { type: "spring", stiffness: 300 }
+        <header className="sticky top-0 z-50 bg-gradient-to-r from-slate-800 to-gray-900 border-b border-gray-800 transition-all duration-300">
+          <div className="relative w-full px-0 py-4 sm:py-6 font-[family-name:var(--font-geist-sans)]">
+            <div className="flex items-center">
+              {/* Logo Section - Left Corner with 50px Padding */}
+              <div className="pl-[50px]">
+                <Link
+                  href="/"
+                  className="flex items-center group"
+                  onClick={() => {
+                    setIsMenuOpen(false);
+                    setActiveDropdown(null);
                   }}
-                  className="w-32 md:w-38"
+                  onMouseEnter={() => setIsLogoHovered(true)}
+                  onMouseLeave={() => setIsLogoHovered(false)}
                 >
-                  <Image
-                    src={Logo}
-                    alt="Company Logo"
-                    width={150}
-                    height={150}
-                    priority
-                    className='brightness-0 invert cursor:pointer md:cursor-none'
-                  />
-                </motion.div>
-              </Link>
+                  <motion.div
+                    animate={{
+                      scale: isLogoHovered ? 1.1 : 1,
+                      transition: { type: "spring", stiffness: 300 }
+                    }}
+                    className="w-32 md:w-38"
+                  >
+                    <Image
+                      src={Logo}
+                      alt="Company Logo"
+                      width={150}
+                      height={150}
+                      priority
+                      className="brightness-0 invert cursor-pointer md:cursor-none"
+                    />
+                  </motion.div>
+                </Link>
+              </div>
 
-              <nav className="hidden md:block">
-                <table>
-                  <tbody>
-                    <tr>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "About"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Careers"))}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Our People"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
-                      </td>
-                      <td className="p-1 px-4">
-                        {renderNavLink(navLinks.find(link => link.name === "Connect"))}
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </nav>
+              {/* Navigation Section - Right Corner with 50px Padding */}
+              <div className="ml-auto pr-[50px]">
+                <nav className="hidden md:block">
+                  <table>
+                    <tbody>
+                      <tr>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Gen Goodwill AI"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "About"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Careers"))}
+                        </td>
+                      </tr>
+                      <tr>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Our People"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
+                        </td>
+                        <td className="p-1 px-4">
+                          {renderNavLink(navLinks.find(link => link.name === "Connect"))}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </nav>
 
-              {/* <nav className="hidden md:block">
-                <div className="flex justify-end">
-                  <div className="grid grid-flow-col auto-cols-max gap-x-10">
-                    <div className="flex flex-col space-y-3 min-w-0">
-                      {renderNavLink(navLinks.find(link => link.name === "About"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Our People"))}
-                    </div>
-
-                    <div className="flex flex-col space-y-3 min-w-0">
-                      {renderNavLink(navLinks.find(link => link.name === "Expertise"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Newsroom"))}
-                    </div>
-
-                    <div className="flex flex-col space-y-3 min-w-0">
-                      {renderNavLink(navLinks.find(link => link.name === "Consumer Insights Shop"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Careers"))}
-                    </div>
-
-                    <div className="flex flex-col space-y-3 min-w-0">
-                      {renderNavLink(navLinks.find(link => link.name === "Reputation Capital AI"))}
-                      {renderNavLink(navLinks.find(link => link.name === "Connect"))}
-                    </div>
-                  </div>
-                </div>
-              </nav> */}
-
-              <button
-                className="md:hidden focus:outline-none p-2"
-                onClick={() => setIsMenuOpen(!isMenuOpen)}
-                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-                aria-expanded={isMenuOpen}
-              >
-                <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  {isMenuOpen ? (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  ) : (
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                  )}
-                </svg>
-              </button>
+                <button
+                  className="md:hidden focus:outline-none p-2"
+                  onClick={() => setIsMenuOpen(!isMenuOpen)}
+                  aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isMenuOpen}
+                >
+                  <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    {isMenuOpen ? (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                    ) : (
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    )}
+                  </svg>
+                </button>
+              </div>
             </div>
           </div>
         </header>
@@ -343,7 +295,6 @@ export default function Header() {
               {navLinks.map((link) =>
                 link.name === activeDropdown && link.subLinks ? (
                   <div key={link.name} className="flex">
-                    {/* Left sidebar - 25% width */}
                     <div className="w-1/4 p-8 bg-gray-50">
                       <h2 className="text-2xl font-bold text-gray-900 mb-4">{link.name}</h2>
                       <div className="w-12 h-0.5 bg-emerald-500 mb-6"></div>
@@ -354,10 +305,8 @@ export default function Header() {
                       </p>
                     </div>
 
-                    {/* Divider line */}
                     <div className="w-[2px] bg-gray-800"></div>
 
-                    {/* Right content - 75% width */}
                     <div className="w-3/4 p-8">
                       <div className="grid grid-cols-3 gap-8">
                         {link.subLinks.map((group, index) => (
@@ -365,17 +314,22 @@ export default function Header() {
                             <h3 className="text-gray-900 font-bold text-xl mb-6">{group.title}</h3>
                             <ul className="space-y-3">
                               {group.items.map((item, itemIndex) => {
-                                // Ensure we use the correct base path for all links
                                 let basePath = link.path === '#' ? '/expertise' : link.path;
                                 if (group.title) {
                                   basePath = link.path === '#' ? `/expertise/${group.title.toLowerCase()}` : link.path;
                                 } else {
                                   basePath = link.path === '#' ? `/expertise/sectors` : link.path;
                                 }
-                                const itemPath = `${basePath}/${item.toLowerCase()
-                                  .replace(/&/g, 'and')
-                                  .replace(/\s+/g, '-')
-                                  .replace(/[^a-z0-9-]/g, '')}`;
+                                const itemPath = (item === "Inclusion and Belonging" && link.name === "Careers")
+                                  ? "/about/inclusion-and-belonging"
+                                  : (item === "News and Insights" && link.name === "About")
+                                    ? "/newsroom"
+                                    : (item === "Inclusion and belonging" && link.name === "Our People")
+                                      ? "/about/inclusion-and-belonging"
+                                      : `${basePath}/${item.toLowerCase()
+                                        .replace(/&/g, 'and')
+                                        .replace(/\s+/g, '-')
+                                        .replace(/[^a-z0-9-]/g, '')}`;
 
                                 return (
                                   <li key={`desktop-item-${itemIndex}`}>
@@ -479,10 +433,17 @@ export default function Header() {
                                     <ul className="space-y-1">
                                       {group.items.map((item, itemIndex) => {
                                         const basePath = link.path === '#' ? '/expertise' : link.path;
-                                        const itemPath = `${basePath}/${item.toLowerCase()
-                                          .replace(/&/g, 'and')
-                                          .replace(/\s+/g, '-')
-                                          .replace(/[^a-z0-9-]/g, '')}`;
+                                        const itemPath = (item === "Inclusion and Belonging" && link.name === "Careers")
+                                          ? "/about/inclusion-and-belonging"
+                                          : (item === "News and Insights" && link.name === "About")
+                                            ? "/newsroom"
+                                            : (item === "Inclusion and belonging" && link.name === "Our People")
+                                              ? "/about/inclusion-and-belonging"
+                                              : `${basePath}/${item.toLowerCase()
+                                                .replace(/&/g, 'and')
+                                                .replace(/\s+/g, '-')
+                                                .replace(/[^a-z0-9-]/g, '')}`;
+
                                         return (
                                           <li key={`mobile-item-${itemIndex}`}>
                                             <Link

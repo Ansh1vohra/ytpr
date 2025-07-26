@@ -14,7 +14,7 @@ const fadeUp = {
 };
 
 const impact = () => {
-  const [isHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // Fixed: Added setIsHovered to useState
   const isCursorActive = isHovered;
   const [isTouchDevice, setIsTouchDevice] = useState(false);
 
@@ -71,7 +71,7 @@ const impact = () => {
           {/* Block 1 */}
           <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
             <Image
-              src="/A9A6924WeberPhotography-e1676062876926-1.webp"
+              src="/impact-1.jpeg"
               alt="Operationalizing inclusion"
               width={400}
               height={350}
@@ -91,7 +91,7 @@ const impact = () => {
           {/* Block 2 */}
           <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
             <Image
-              src="/A9A6924WeberPhotography-e1676062876926-1.webp"
+              src="/impact-2.jpeg"
               alt="Sense of belonging"
               width={400}
               height={350}
@@ -111,7 +111,7 @@ const impact = () => {
           {/* Block 3 */}
           <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
             <Image
-              src="/A9A6924WeberPhotography-e1676062876926-1.webp"
+              src="/impact-4.jpeg"
               alt="Embedding inclusive thinking"
               width={400}
               height={350}
@@ -131,7 +131,7 @@ const impact = () => {
           {/* Block 4 */}
           <div className="flex flex-col backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow group">
             <Image
-              src="/A9A6924WeberPhotography-e1676062876926-1.webp"
+              src="/impact-3.jpeg"
               alt="Sense of belonging"
               width={400}
               height={350}
@@ -188,10 +188,11 @@ const impact = () => {
                   required
                 />
                 <select
+                  defaultValue=""
                   className="border border-gray-300 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   required
                 >
-                  <option value="" disabled selected>
+                  <option value="" disabled>
                     Subject matter*
                   </option>
                   <option value="general">General Inquiry</option>

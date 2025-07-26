@@ -109,11 +109,11 @@ const InclusionPage: React.FC = () => {
             className="w-64 h-48 transform -rotate-12 shadow-lg border border-gray-200 rounded-xl overflow-hidden"
           >
             <Image
-              src="/raimg1.jpg"
+              src="/inclusion.jpeg"
               alt="Inclusion initiative"
               width={256}
               height={192}
-              className="object-cover w-full h-full"
+              className="object-cover w-full h-full scale-110"
             />
           </motion.div>
         </motion.div>
@@ -151,14 +151,17 @@ const InclusionPage: React.FC = () => {
             {
               title: "Operationalizing inclusion on all fronts",
               text: "From sponsorship/mentoring programs to expanding BRGs, fostering a culture of inclusion for all while driving business impact.",
+              image: "/inclusion-1.jpeg", // <-- First image
             },
             {
               title: "Creating a sense of belonging in every corner of our culture",
               text: "We’re committed to creating a workplace where all employees feel welcomed, empowered, and invested to stay and grow.",
+              image: "/inclusion-2.jpeg", // <-- Second image
             },
             {
               title: "Embedding inclusive thinking in our work",
               text: "And using the power of that work across our network to drive change.",
+              image: "/inclusion-3.jpeg", // <-- Third image
             },
           ].map((block, index) => (
             <motion.div
@@ -168,7 +171,7 @@ const InclusionPage: React.FC = () => {
             >
               <motion.div variants={imageVariants}>
                 <Image
-                  src="/raimg1.jpg"
+                  src={block.image} // <-- use image field here
                   alt={block.title}
                   width={400}
                   height={350}
@@ -187,6 +190,7 @@ const InclusionPage: React.FC = () => {
         </div>
       </motion.section>
 
+
       {/* Continuation Section */}
       <motion.section
         variants={containerVariants}
@@ -201,26 +205,32 @@ const InclusionPage: React.FC = () => {
               Fostering a culture of inclusion & belonging
             </h2>
           </motion.div>
-          <motion.div variants={containerVariants} className="md:w-2/3 flex flex-col gap-8">
+          <motion.div
+            variants={containerVariants}
+            className="md:w-2/3 flex flex-col gap-8"
+          >
             {[
               {
                 title: "30+ Local Inclusion Councils",
                 text: "Employees in local offices around the globe regularly meet and plan programming to encourage inclusion and engagement – from learning about different lived experiences through cultural celebrations and Brave Spaces to employees providing pro-bono support to local non-profit organizations.",
+                image: "/inclusion-4.jpeg",
               },
               {
                 title: "Business Resource Groups",
                 text: "Our Business Resource Groups (BRGs) are open to all employees. They not only unite and support employees and allies across North America, but also focus on ways to make business impact. They include AFIRE (Asian for Inclusion, Respect and Empowerment), EQUITABLE (employees with disabilities and chronic illness), LIGA (Latino Inclusion & Growth Alliance), NOIR (Nurturing Our Inclusion for Representation), and Q+ (LGBTQIA+ Guidance).",
+                image: "/inclusion-5.jpeg",
               },
               {
                 title: "C.O.N.N.E.C.T",
                 text: "Connecting Our Now and Next Executive and Creative Talent (CONNECT) is a senior-level sponsorship program supporting our high-performing, high-potential leaders focused on inclusion.",
+                image: "/inclusion-6.jpeg",
               },
             ].map((block, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <div className="flex flex-col md:flex-row items-center gap-6 backdrop-blur-sm bg-white/30 rounded-xl border border-gray-200 shadow-lg hover:shadow-xl transition-shadow">
                   <motion.div variants={imageVariants}>
                     <Image
-                      src="/raimg1.jpg"
+                      src={block.image}
                       alt={block.title}
                       width={300}
                       height={300}
@@ -241,6 +251,7 @@ const InclusionPage: React.FC = () => {
           </motion.div>
         </div>
       </motion.section>
+
 
       {/* Call to Action */}
       <motion.section
