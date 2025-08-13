@@ -95,11 +95,11 @@ const value: FC = () => {
                 >
                     <div className="w-3/4">
                         <Image
-                            src="/wiber.jpeg"
-                            alt="Wiber Image"
+                            src="/value-1.jpeg"
+                            alt="ytpr Image"
                             width={800}
                             height={600}
-                            className="w-full h-auto object-cover"
+                            className="w-full max-h-96 h-auto object-cover"
                         />
                     </div>
                 </motion.div>
@@ -179,8 +179,8 @@ const value: FC = () => {
                     <div className="flex items-center justify-center w-full h-[50vh]">
                         <div className="w-1/3 flex justify-end pr-2">
                             <Image
-                                src="/one.webp"
-                                alt="One Image"
+                                src="/value-2.jpeg"
+                                alt="value-2 Image"
                                 width={200}
                                 height={200}
                                 className="w-[50vh] h-[50vh] rounded-full object-cover"
@@ -188,8 +188,8 @@ const value: FC = () => {
                         </div>
                         <div className="w-2/3">
                             <Image
-                                src="/two.webp"
-                                alt="Two Image"
+                                src="/value-3.jpeg"
+                                alt="value-3 Image"
                                 width={400}
                                 height={400}
                                 className="w-full h-[50vh] rounded-none object-cover"
